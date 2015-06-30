@@ -1,0 +1,1870 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.RandomForest -I 10 -K 0 -S 1 -depth 7 -print -num-slots 1
+Relation:     phonecalls
+Instances:    2999
+Attributes:   15
+              Day
+              Hour
+              RingerMode
+              RingerModeChangedMin
+              Charging
+              ChargingChangedMin
+              ScreenOn
+              ScreenChangedMin
+              Proximity
+              Pitch
+              MaxAcc
+              CalledHowManyTimes
+              TimeSinceLastCall
+              LastCallPicked
+              Picked
+Test mode:    evaluate on training data
+
+=== Classifier model (full training set) ===
+
+Random forest of 10 trees, each constructed while considering 4 random features.
+Out of bag error: 0.2125
+Max. depth of trees: 7
+
+All the base classifiers: 
+
+
+RandomTree
+==========
+
+RingerMode = Normal
+|   RingerModeChangedMin < 0.56
+|   |   ChargingChangedMin < 8.62 : Baseline (26/0)
+|   |   ChargingChangedMin >= 8.62
+|   |   |   Day < 3.5 : Baseline (4/0)
+|   |   |   Day >= 3.5 : Picked (2/0)
+|   RingerModeChangedMin >= 0.56
+|   |   LastCallPicked < 0.5
+|   |   |   ScreenOn < 0.5
+|   |   |   |   RingerModeChangedMin < 205.76
+|   |   |   |   |   CalledHowManyTimes < 122.5
+|   |   |   |   |   |   TimeSinceLastCall < 1.49 : Baseline (21/3)
+|   |   |   |   |   |   TimeSinceLastCall >= 1.49 : Picked (218/38)
+|   |   |   |   |   CalledHowManyTimes >= 122.5
+|   |   |   |   |   |   Hour < 18.5 : Baseline (68/10)
+|   |   |   |   |   |   Hour >= 18.5 : Picked (13/2)
+|   |   |   |   RingerModeChangedMin >= 205.76
+|   |   |   |   |   ScreenChangedMin < 21.67
+|   |   |   |   |   |   CalledHowManyTimes < 37 : Picked (52/3)
+|   |   |   |   |   |   CalledHowManyTimes >= 37 : Baseline (3/0)
+|   |   |   |   |   ScreenChangedMin >= 21.67 : Baseline (3/0)
+|   |   |   ScreenOn >= 0.5
+|   |   |   |   ScreenChangedMin < 1.26
+|   |   |   |   |   MaxAcc < 0.22
+|   |   |   |   |   |   Hour < 12.5 : Baseline (86/26)
+|   |   |   |   |   |   Hour >= 12.5 : Baseline (144/13)
+|   |   |   |   |   MaxAcc >= 0.22
+|   |   |   |   |   |   MaxAcc < 3.81 : Picked (43/14)
+|   |   |   |   |   |   MaxAcc >= 3.81 : Baseline (34/5)
+|   |   |   |   ScreenChangedMin >= 1.26
+|   |   |   |   |   MaxAcc < 0.26
+|   |   |   |   |   |   ChargingChangedMin < 164.58 : Baseline (41/16)
+|   |   |   |   |   |   ChargingChangedMin >= 164.58 : Picked (15/2)
+|   |   |   |   |   MaxAcc >= 0.26 : Picked (31/0)
+|   |   LastCallPicked >= 0.5
+|   |   |   CalledHowManyTimes < 283
+|   |   |   |   CalledHowManyTimes < 149.5
+|   |   |   |   |   ScreenOn < 0.5
+|   |   |   |   |   |   ScreenChangedMin < 5.4 : Picked (687/46)
+|   |   |   |   |   |   ScreenChangedMin >= 5.4 : Baseline (92/41)
+|   |   |   |   |   ScreenOn >= 0.5
+|   |   |   |   |   |   Hour < 8.5 : Baseline (36/11)
+|   |   |   |   |   |   Hour >= 8.5 : Picked (523/164)
+|   |   |   |   CalledHowManyTimes >= 149.5
+|   |   |   |   |   RingerModeChangedMin < 12.39
+|   |   |   |   |   |   MaxAcc < 0.06 : Baseline (10/0)
+|   |   |   |   |   |   MaxAcc >= 0.06 : Picked (4/1)
+|   |   |   |   |   RingerModeChangedMin >= 12.39
+|   |   |   |   |   |   CalledHowManyTimes < 227.5 : Picked (43/15)
+|   |   |   |   |   |   CalledHowManyTimes >= 227.5 : Picked (16/0)
+|   |   |   CalledHowManyTimes >= 283
+|   |   |   |   ChargingChangedMin < 17.16
+|   |   |   |   |   RingerModeChangedMin < 6.78
+|   |   |   |   |   |   Hour < 10 : Picked (1/0)
+|   |   |   |   |   |   Hour >= 10 : Baseline (4/0)
+|   |   |   |   |   RingerModeChangedMin >= 6.78 : Baseline (12/0)
+|   |   |   |   ChargingChangedMin >= 17.16
+|   |   |   |   |   CalledHowManyTimes < 362 : Baseline (3/0)
+|   |   |   |   |   CalledHowManyTimes >= 362
+|   |   |   |   |   |   CalledHowManyTimes < 575 : Picked (7/0)
+|   |   |   |   |   |   CalledHowManyTimes >= 575 : Baseline (2/0)
+RingerMode = Vibrate
+|   Hour < 9.5
+|   |   ScreenOn < 0.5
+|   |   |   ScreenChangedMin < 10.3
+|   |   |   |   CalledHowManyTimes < 165.5
+|   |   |   |   |   RingerModeChangedMin < 7.77 : Baseline (3/0)
+|   |   |   |   |   RingerModeChangedMin >= 7.77
+|   |   |   |   |   |   MaxAcc < 0 : Baseline (2/0)
+|   |   |   |   |   |   MaxAcc >= 0 : Picked (26/2)
+|   |   |   |   CalledHowManyTimes >= 165.5 : Baseline (16/0)
+|   |   |   ScreenChangedMin >= 10.3 : Baseline (23/0)
+|   |   ScreenOn >= 0.5
+|   |   |   TimeSinceLastCall < 13.22
+|   |   |   |   ScreenChangedMin < 0.2 : Picked (2/0)
+|   |   |   |   ScreenChangedMin >= 0.2 : Baseline (9/0)
+|   |   |   TimeSinceLastCall >= 13.22 : Baseline (64/0)
+|   Hour >= 9.5
+|   |   ScreenOn < 0.5
+|   |   |   ScreenChangedMin < 1.26
+|   |   |   |   Pitch < -70.5
+|   |   |   |   |   Hour < 12.5 : Baseline (2/0)
+|   |   |   |   |   Hour >= 12.5
+|   |   |   |   |   |   MaxAcc < 0.09 : Baseline (2/1)
+|   |   |   |   |   |   MaxAcc >= 0.09 : Picked (5/0)
+|   |   |   |   Pitch >= -70.5 : Picked (55/0)
+|   |   |   ScreenChangedMin >= 1.26
+|   |   |   |   Pitch < -14
+|   |   |   |   |   LastCallPicked < 0.5 : Picked (1.93/0.93)
+|   |   |   |   |   LastCallPicked >= 0.5 : Picked (13/0)
+|   |   |   |   Pitch >= -14
+|   |   |   |   |   RingerModeChangedMin < 101.03
+|   |   |   |   |   |   Pitch < -4 : Picked (3.29/1.29)
+|   |   |   |   |   |   Pitch >= -4 : Baseline (8.78/0)
+|   |   |   |   |   RingerModeChangedMin >= 101.03
+|   |   |   |   |   |   Hour < 18 : Picked (4/0)
+|   |   |   |   |   |   Hour >= 18 : Baseline (1/0)
+|   |   ScreenOn >= 0.5
+|   |   |   Pitch < -37
+|   |   |   |   ScreenChangedMin < 0.09
+|   |   |   |   |   Pitch < -107.5 : Baseline (1/0)
+|   |   |   |   |   Pitch >= -107.5 : Picked (12/0)
+|   |   |   |   ScreenChangedMin >= 0.09
+|   |   |   |   |   CalledHowManyTimes < 66.5
+|   |   |   |   |   |   MaxAcc < 0.94 : Baseline (23/4)
+|   |   |   |   |   |   MaxAcc >= 0.94 : Picked (10/1)
+|   |   |   |   |   CalledHowManyTimes >= 66.5 : Baseline (7/0)
+|   |   |   Pitch >= -37
+|   |   |   |   ScreenChangedMin < 0.53
+|   |   |   |   |   RingerModeChangedMin < 1384.9
+|   |   |   |   |   |   ScreenChangedMin < 0.31 : Baseline (49/12)
+|   |   |   |   |   |   ScreenChangedMin >= 0.31 : Baseline (58/0)
+|   |   |   |   |   RingerModeChangedMin >= 1384.9
+|   |   |   |   |   |   ChargingChangedMin < 52.26 : Picked (5/0)
+|   |   |   |   |   |   ChargingChangedMin >= 52.26 : Baseline (2/0)
+|   |   |   |   ScreenChangedMin >= 0.53
+|   |   |   |   |   TimeSinceLastCall < 292.05
+|   |   |   |   |   |   RingerModeChangedMin < 22.09 : Picked (12/0)
+|   |   |   |   |   |   RingerModeChangedMin >= 22.09 : Baseline (11/3)
+|   |   |   |   |   TimeSinceLastCall >= 292.05 : Picked (13/0)
+RingerMode = Silent
+|   ChargingChangedMin < 453.91
+|   |   ScreenChangedMin < 8.88
+|   |   |   Pitch < -12.5
+|   |   |   |   MaxAcc < 2.17
+|   |   |   |   |   CalledHowManyTimes < 194
+|   |   |   |   |   |   ScreenChangedMin < 2.61 : Picked (53/22)
+|   |   |   |   |   |   ScreenChangedMin >= 2.61 : Picked (9/0)
+|   |   |   |   |   CalledHowManyTimes >= 194 : Baseline (7/0)
+|   |   |   |   MaxAcc >= 2.17 : Baseline (5/0)
+|   |   |   Pitch >= -12.5
+|   |   |   |   ChargingChangedMin < 83.34
+|   |   |   |   |   ScreenChangedMin < 0.05
+|   |   |   |   |   |   Day < 5 : Picked (6/0)
+|   |   |   |   |   |   Day >= 5 : Baseline (3/0)
+|   |   |   |   |   ScreenChangedMin >= 0.05
+|   |   |   |   |   |   ScreenChangedMin < 0.55 : Baseline (50/0)
+|   |   |   |   |   |   ScreenChangedMin >= 0.55 : Baseline (58/5)
+|   |   |   |   ChargingChangedMin >= 83.34
+|   |   |   |   |   TimeSinceLastCall < 2.51 : Baseline (12/0)
+|   |   |   |   |   TimeSinceLastCall >= 2.51
+|   |   |   |   |   |   ScreenChangedMin < 0.76 : Baseline (10/1)
+|   |   |   |   |   |   ScreenChangedMin >= 0.76 : Picked (23/6)
+|   |   ScreenChangedMin >= 8.88
+|   |   |   Pitch < -127.5
+|   |   |   |   ChargingChangedMin < 57.72 : Picked (1/0)
+|   |   |   |   ChargingChangedMin >= 57.72 : Baseline (5/0)
+|   |   |   Pitch >= -127.5 : Baseline (45/0)
+|   ChargingChangedMin >= 453.91 : Baseline (24/0)
+
+Size of the tree : 150
+Max depth of tree: 7
+
+
+RandomTree
+==========
+
+MaxAcc < 0.07
+|   ScreenOn < 0.5
+|   |   CalledHowManyTimes < 211.5
+|   |   |   ScreenChangedMin < 6.19
+|   |   |   |   MaxAcc < 0
+|   |   |   |   |   ChargingChangedMin < 14.5
+|   |   |   |   |   |   RingerModeChangedMin < 6.63 : Baseline (3/0)
+|   |   |   |   |   |   RingerModeChangedMin >= 6.63 : Picked (2/0)
+|   |   |   |   |   ChargingChangedMin >= 14.5 : Baseline (9/0)
+|   |   |   |   MaxAcc >= 0
+|   |   |   |   |   ScreenChangedMin < 1.54
+|   |   |   |   |   |   RingerModeChangedMin < 0.28 : Baseline (4/0)
+|   |   |   |   |   |   RingerModeChangedMin >= 0.28 : Picked (393/24)
+|   |   |   |   |   ScreenChangedMin >= 1.54
+|   |   |   |   |   |   Pitch < 4 : Picked (125.73/24)
+|   |   |   |   |   |   Pitch >= 4 : Baseline (19.27/6.27)
+|   |   |   ScreenChangedMin >= 6.19
+|   |   |   |   ScreenChangedMin < 16.09
+|   |   |   |   |   RingerMode = Normal
+|   |   |   |   |   |   RingerModeChangedMin < 26.55 : Baseline (22/5)
+|   |   |   |   |   |   RingerModeChangedMin >= 26.55 : Picked (36/12)
+|   |   |   |   |   RingerMode = Vibrate : Picked (2/0)
+|   |   |   |   |   RingerMode = Silent
+|   |   |   |   |   |   ScreenChangedMin < 6.81 : Picked (3/0)
+|   |   |   |   |   |   ScreenChangedMin >= 6.81 : Baseline (17/0)
+|   |   |   |   ScreenChangedMin >= 16.09
+|   |   |   |   |   RingerModeChangedMin < 332.28 : Baseline (64/0)
+|   |   |   |   |   RingerModeChangedMin >= 332.28
+|   |   |   |   |   |   Day < 4.5 : Picked (7/2)
+|   |   |   |   |   |   Day >= 4.5 : Baseline (4/0)
+|   |   CalledHowManyTimes >= 211.5
+|   |   |   RingerMode = Normal
+|   |   |   |   ScreenChangedMin < 1.43
+|   |   |   |   |   CalledHowManyTimes < 533.5
+|   |   |   |   |   |   TimeSinceLastCall < 25.79 : Picked (5/0)
+|   |   |   |   |   |   TimeSinceLastCall >= 25.79 : Picked (5/1)
+|   |   |   |   |   CalledHowManyTimes >= 533.5 : Baseline (10/0)
+|   |   |   |   ScreenChangedMin >= 1.43 : Baseline (40/0)
+|   |   |   RingerMode = Vibrate : Baseline (31/0)
+|   |   |   RingerMode = Silent : Baseline (2/0)
+|   ScreenOn >= 0.5
+|   |   Pitch < -5.5
+|   |   |   CalledHowManyTimes < 255.5
+|   |   |   |   RingerModeChangedMin < 71.88
+|   |   |   |   |   RingerModeChangedMin < 64.79
+|   |   |   |   |   |   CalledHowManyTimes < 5.5 : Baseline (78.8/26.2)
+|   |   |   |   |   |   CalledHowManyTimes >= 5.5 : Picked (121/41)
+|   |   |   |   |   RingerModeChangedMin >= 64.79 : Picked (11/0)
+|   |   |   |   RingerModeChangedMin >= 71.88
+|   |   |   |   |   ChargingChangedMin < 255.43
+|   |   |   |   |   |   Hour < 13.5 : Baseline (45.6/4.4)
+|   |   |   |   |   |   Hour >= 13.5 : Baseline (47.41/18.8)
+|   |   |   |   |   ChargingChangedMin >= 255.43
+|   |   |   |   |   |   MaxAcc < 0.01 : Baseline (11/3.4)
+|   |   |   |   |   |   MaxAcc >= 0.01 : Picked (15.2/1.8)
+|   |   |   CalledHowManyTimes >= 255.5
+|   |   |   |   ChargingChangedMin < 46.49 : Baseline (34/0)
+|   |   |   |   ChargingChangedMin >= 46.49
+|   |   |   |   |   Day < 0.5 : Picked (1/0)
+|   |   |   |   |   Day >= 0.5 : Baseline (1/0)
+|   |   Pitch >= -5.5
+|   |   |   ScreenChangedMin < 2.13
+|   |   |   |   TimeSinceLastCall < 1.26
+|   |   |   |   |   TimeSinceLastCall < 0.73
+|   |   |   |   |   |   Pitch < -1.5 : Picked (2.33/0.29)
+|   |   |   |   |   |   Pitch >= -1.5 : Baseline (31.47/1.56)
+|   |   |   |   |   TimeSinceLastCall >= 0.73 : Baseline (26.6/0)
+|   |   |   |   TimeSinceLastCall >= 1.26
+|   |   |   |   |   Day < 3.5
+|   |   |   |   |   |   CalledHowManyTimes < 264.5 : Baseline (244.79/43.59)
+|   |   |   |   |   |   CalledHowManyTimes >= 264.5 : Baseline (40/0)
+|   |   |   |   |   Day >= 3.5
+|   |   |   |   |   |   RingerModeChangedMin < 35.91 : Picked (55/27)
+|   |   |   |   |   |   RingerModeChangedMin >= 35.91 : Baseline (90/16)
+|   |   |   ScreenChangedMin >= 2.13
+|   |   |   |   ChargingChangedMin < 13.23
+|   |   |   |   |   ScreenChangedMin < 8.06
+|   |   |   |   |   |   Pitch < 3.5 : Baseline (12/1)
+|   |   |   |   |   |   Pitch >= 3.5 : Picked (1/0)
+|   |   |   |   |   ScreenChangedMin >= 8.06 : Picked (3/0)
+|   |   |   |   ChargingChangedMin >= 13.23
+|   |   |   |   |   TimeSinceLastCall < 33.2
+|   |   |   |   |   |   RingerModeChangedMin < 651.67 : Picked (15.8/7.2)
+|   |   |   |   |   |   RingerModeChangedMin >= 651.67 : Picked (6.4/0)
+|   |   |   |   |   TimeSinceLastCall >= 33.2
+|   |   |   |   |   |   ChargingChangedMin < 87.14 : Picked (7.6/2)
+|   |   |   |   |   |   ChargingChangedMin >= 87.14 : Picked (12/0)
+MaxAcc >= 0.07
+|   Hour < 8.5
+|   |   TimeSinceLastCall < 845.89
+|   |   |   TimeSinceLastCall < 0.75 : Picked (3/0)
+|   |   |   TimeSinceLastCall >= 0.75
+|   |   |   |   Hour < 0.5 : Picked (4/0)
+|   |   |   |   Hour >= 0.5
+|   |   |   |   |   RingerMode = Normal
+|   |   |   |   |   |   CalledHowManyTimes < 62 : Picked (43/20)
+|   |   |   |   |   |   CalledHowManyTimes >= 62 : Baseline (10/0)
+|   |   |   |   |   RingerMode = Vibrate
+|   |   |   |   |   |   Hour < 7.5 : Baseline (25/0)
+|   |   |   |   |   |   Hour >= 7.5 : Baseline (16/5)
+|   |   |   |   |   RingerMode = Silent : Picked (1/0)
+|   |   TimeSinceLastCall >= 845.89 : Picked (11/0)
+|   Hour >= 8.5
+|   |   RingerMode = Normal
+|   |   |   LastCallPicked < 0.5
+|   |   |   |   CalledHowManyTimes < 224.5
+|   |   |   |   |   TimeSinceLastCall < 1.17 : Baseline (15/0)
+|   |   |   |   |   TimeSinceLastCall >= 1.17
+|   |   |   |   |   |   ScreenChangedMin < 0.74 : Picked (153/42)
+|   |   |   |   |   |   ScreenChangedMin >= 0.74 : Picked (113/10)
+|   |   |   |   CalledHowManyTimes >= 224.5
+|   |   |   |   |   ScreenChangedMin < 0.14 : Baseline (17/0)
+|   |   |   |   |   ScreenChangedMin >= 0.14
+|   |   |   |   |   |   ScreenChangedMin < 1.45 : Picked (9/1)
+|   |   |   |   |   |   ScreenChangedMin >= 1.45 : Baseline (17/5)
+|   |   |   LastCallPicked >= 0.5
+|   |   |   |   ScreenChangedMin < 0.76
+|   |   |   |   |   MaxAcc < 0.89
+|   |   |   |   |   |   ScreenChangedMin < 0.31 : Picked (73/0)
+|   |   |   |   |   |   ScreenChangedMin >= 0.31 : Picked (55/11)
+|   |   |   |   |   MaxAcc >= 0.89
+|   |   |   |   |   |   ScreenOn < 0.5 : Picked (111/15)
+|   |   |   |   |   |   ScreenOn >= 0.5 : Baseline (99/48)
+|   |   |   |   ScreenChangedMin >= 0.76
+|   |   |   |   |   RingerModeChangedMin < 260.77
+|   |   |   |   |   |   MaxAcc < 0.28 : Picked (65/11)
+|   |   |   |   |   |   MaxAcc >= 0.28 : Picked (146/7)
+|   |   |   |   |   RingerModeChangedMin >= 260.77 : Picked (86/0)
+|   |   RingerMode = Vibrate
+|   |   |   LastCallPicked < 0.5
+|   |   |   |   TimeSinceLastCall < 873.9
+|   |   |   |   |   ScreenOn < 0.5 : Picked (18/0)
+|   |   |   |   |   ScreenOn >= 0.5
+|   |   |   |   |   |   MaxAcc < 5.14 : Baseline (38/5)
+|   |   |   |   |   |   MaxAcc >= 5.14 : Picked (2/0)
+|   |   |   |   TimeSinceLastCall >= 873.9 : Picked (10/0)
+|   |   |   LastCallPicked >= 0.5
+|   |   |   |   Pitch < 6.5
+|   |   |   |   |   ChargingChangedMin < 9.57
+|   |   |   |   |   |   MaxAcc < 0.1 : Picked (1/0)
+|   |   |   |   |   |   MaxAcc >= 0.1 : Baseline (6/1)
+|   |   |   |   |   ChargingChangedMin >= 9.57
+|   |   |   |   |   |   ChargingChangedMin < 650.73 : Picked (62/9)
+|   |   |   |   |   |   ChargingChangedMin >= 650.73 : Baseline (2/0)
+|   |   |   |   Pitch >= 6.5
+|   |   |   |   |   Proximity < 0.5 : Picked (1/0)
+|   |   |   |   |   Proximity >= 0.5 : Baseline (10/0)
+|   |   RingerMode = Silent
+|   |   |   TimeSinceLastCall < 13.55
+|   |   |   |   ScreenChangedMin < 1.23
+|   |   |   |   |   ScreenChangedMin < 0.69 : Picked (4/0)
+|   |   |   |   |   ScreenChangedMin >= 0.69
+|   |   |   |   |   |   Day < 0.5 : Picked (1/0)
+|   |   |   |   |   |   Day >= 0.5 : Baseline (6/0)
+|   |   |   |   ScreenChangedMin >= 1.23
+|   |   |   |   |   CalledHowManyTimes < 3.5 : Picked (9/0)
+|   |   |   |   |   CalledHowManyTimes >= 3.5
+|   |   |   |   |   |   ScreenChangedMin < 1.69 : Picked (4/0)
+|   |   |   |   |   |   ScreenChangedMin >= 1.69 : Baseline (4/1)
+|   |   |   TimeSinceLastCall >= 13.55
+|   |   |   |   MaxAcc < 2.01
+|   |   |   |   |   ChargingChangedMin < 162.44 : Picked (6/0)
+|   |   |   |   |   ChargingChangedMin >= 162.44 : Baseline (2/0)
+|   |   |   |   MaxAcc >= 2.01
+|   |   |   |   |   Pitch < -5 : Baseline (7/0)
+|   |   |   |   |   Pitch >= -5
+|   |   |   |   |   |   Proximity < 0.5 : Picked (6/2)
+|   |   |   |   |   |   Proximity >= 0.5 : Baseline (10/0)
+
+Size of the tree : 169
+Max depth of tree: 7
+
+
+RandomTree
+==========
+
+LastCallPicked < 0.5
+|   MaxAcc < 0.07
+|   |   ScreenOn < 0.5
+|   |   |   Charging < 0.5
+|   |   |   |   CalledHowManyTimes < 242.5
+|   |   |   |   |   RingerModeChangedMin < 25.2
+|   |   |   |   |   |   TimeSinceLastCall < 2.2 : Baseline (9/1)
+|   |   |   |   |   |   TimeSinceLastCall >= 2.2 : Picked (70/10)
+|   |   |   |   |   RingerModeChangedMin >= 25.2
+|   |   |   |   |   |   RingerMode = Normal : Picked (97/40)
+|   |   |   |   |   |   RingerMode = Vibrate : Baseline (15/3)
+|   |   |   |   |   |   RingerMode = Silent : Baseline (44/7)
+|   |   |   |   CalledHowManyTimes >= 242.5
+|   |   |   |   |   Pitch < -22 : Picked (1/0)
+|   |   |   |   |   Pitch >= -22 : Baseline (38/0)
+|   |   |   Charging >= 0.5
+|   |   |   |   Hour < 22.5
+|   |   |   |   |   CalledHowManyTimes < 8
+|   |   |   |   |   |   ChargingChangedMin < 12.88 : Picked (2/0)
+|   |   |   |   |   |   ChargingChangedMin >= 12.88 : Baseline (5/0)
+|   |   |   |   |   CalledHowManyTimes >= 8 : Baseline (19/0)
+|   |   |   |   Hour >= 22.5 : Picked (2/0)
+|   |   ScreenOn >= 0.5
+|   |   |   CalledHowManyTimes < 180.5
+|   |   |   |   Pitch < -8.5
+|   |   |   |   |   MaxAcc < 0
+|   |   |   |   |   |   ChargingChangedMin < 15.59 : Picked (7/0)
+|   |   |   |   |   |   ChargingChangedMin >= 15.59 : Picked (3.17/1.17)
+|   |   |   |   |   MaxAcc >= 0
+|   |   |   |   |   |   ScreenChangedMin < 0.08 : Picked (7.88/0.88)
+|   |   |   |   |   |   ScreenChangedMin >= 0.08 : Baseline (78.23/19.76)
+|   |   |   |   Pitch >= -8.5
+|   |   |   |   |   RingerMode = Normal
+|   |   |   |   |   |   ScreenChangedMin < 0.55 : Baseline (92.77/16)
+|   |   |   |   |   |   ScreenChangedMin >= 0.55 : Picked (26.95/9.71)
+|   |   |   |   |   RingerMode = Vibrate
+|   |   |   |   |   |   Hour < 13.5 : Baseline (43/2)
+|   |   |   |   |   |   Hour >= 13.5 : Baseline (17/7)
+|   |   |   |   |   RingerMode = Silent
+|   |   |   |   |   |   RingerModeChangedMin < 816.7 : Baseline (51/0)
+|   |   |   |   |   |   RingerModeChangedMin >= 816.7 : Picked (1/0)
+|   |   |   CalledHowManyTimes >= 180.5
+|   |   |   |   TimeSinceLastCall < 20.26
+|   |   |   |   |   MaxAcc < 0.02 : Baseline (24/0)
+|   |   |   |   |   MaxAcc >= 0.02
+|   |   |   |   |   |   Hour < 21.5 : Baseline (11/0)
+|   |   |   |   |   |   Hour >= 21.5 : Baseline (9/4)
+|   |   |   |   TimeSinceLastCall >= 20.26 : Baseline (77/0)
+|   MaxAcc >= 0.07
+|   |   ScreenOn < 0.5
+|   |   |   Hour < 7.5
+|   |   |   |   ChargingChangedMin < 202.35 : Baseline (7/0)
+|   |   |   |   ChargingChangedMin >= 202.35 : Picked (1/0)
+|   |   |   Hour >= 7.5
+|   |   |   |   TimeSinceLastCall < 1.62 : Baseline (10/0)
+|   |   |   |   TimeSinceLastCall >= 1.62
+|   |   |   |   |   RingerModeChangedMin < 0.6 : Baseline (7/0)
+|   |   |   |   |   RingerModeChangedMin >= 0.6
+|   |   |   |   |   |   Pitch < 88.5 : Picked (180.64/30.64)
+|   |   |   |   |   |   Pitch >= 88.5 : Picked (24.36/8.36)
+|   |   ScreenOn >= 0.5
+|   |   |   CalledHowManyTimes < 235
+|   |   |   |   RingerModeChangedMin < 87.84
+|   |   |   |   |   CalledHowManyTimes < 173
+|   |   |   |   |   |   MaxAcc < 0.07 : Baseline (4/0)
+|   |   |   |   |   |   MaxAcc >= 0.07 : Baseline (132/50)
+|   |   |   |   |   CalledHowManyTimes >= 173 : Picked (11/0)
+|   |   |   |   RingerModeChangedMin >= 87.84
+|   |   |   |   |   CalledHowManyTimes < 3.5
+|   |   |   |   |   |   ScreenChangedMin < 0.84 : Baseline (23/9)
+|   |   |   |   |   |   ScreenChangedMin >= 0.84 : Picked (9/0)
+|   |   |   |   |   CalledHowManyTimes >= 3.5
+|   |   |   |   |   |   ChargingChangedMin < 94.03 : Picked (15/4)
+|   |   |   |   |   |   ChargingChangedMin >= 94.03 : Picked (29/0)
+|   |   |   CalledHowManyTimes >= 235
+|   |   |   |   TimeSinceLastCall < 11.57
+|   |   |   |   |   ScreenChangedMin < 1.07 : Baseline (2/0)
+|   |   |   |   |   ScreenChangedMin >= 1.07 : Picked (3/0)
+|   |   |   |   TimeSinceLastCall >= 11.57 : Baseline (38/0)
+LastCallPicked >= 0.5
+|   ScreenOn < 0.5
+|   |   ScreenChangedMin < 4.01
+|   |   |   RingerMode = Normal
+|   |   |   |   Hour < 10.5 : Picked (129/0)
+|   |   |   |   Hour >= 10.5
+|   |   |   |   |   ChargingChangedMin < 353.16
+|   |   |   |   |   |   MaxAcc < 0 : Baseline (2/0)
+|   |   |   |   |   |   MaxAcc >= 0 : Picked (482/25)
+|   |   |   |   |   ChargingChangedMin >= 353.16
+|   |   |   |   |   |   RingerModeChangedMin < 443.39 : Picked (31/14)
+|   |   |   |   |   |   RingerModeChangedMin >= 443.39 : Picked (40/1)
+|   |   |   RingerMode = Vibrate
+|   |   |   |   RingerModeChangedMin < 9.79
+|   |   |   |   |   MaxAcc < 0.02 : Baseline (6/0)
+|   |   |   |   |   MaxAcc >= 0.02
+|   |   |   |   |   |   Day < 5 : Picked (9/0)
+|   |   |   |   |   |   Day >= 5 : Baseline (1/0)
+|   |   |   |   RingerModeChangedMin >= 9.79
+|   |   |   |   |   ScreenChangedMin < 1.8 : Picked (39/0)
+|   |   |   |   |   ScreenChangedMin >= 1.8
+|   |   |   |   |   |   Day < 2 : Picked (7/0)
+|   |   |   |   |   |   Day >= 2 : Picked (6/2)
+|   |   |   RingerMode = Silent
+|   |   |   |   Pitch < -116.5 : Baseline (5/0)
+|   |   |   |   Pitch >= -116.5
+|   |   |   |   |   Pitch < -0.5 : Picked (13/0)
+|   |   |   |   |   Pitch >= -0.5
+|   |   |   |   |   |   MaxAcc < 0 : Baseline (2/0)
+|   |   |   |   |   |   MaxAcc >= 0 : Picked (3/1)
+|   |   ScreenChangedMin >= 4.01
+|   |   |   RingerMode = Normal
+|   |   |   |   RingerModeChangedMin < 34.25
+|   |   |   |   |   MaxAcc < 0 : Baseline (5/0)
+|   |   |   |   |   MaxAcc >= 0
+|   |   |   |   |   |   TimeSinceLastCall < 28.46 : Picked (12/4)
+|   |   |   |   |   |   TimeSinceLastCall >= 28.46 : Baseline (17/0)
+|   |   |   |   RingerModeChangedMin >= 34.25
+|   |   |   |   |   ChargingChangedMin < 43.1 : Picked (12/0)
+|   |   |   |   |   ChargingChangedMin >= 43.1
+|   |   |   |   |   |   TimeSinceLastCall < 147.07 : Picked (40/11)
+|   |   |   |   |   |   TimeSinceLastCall >= 147.07 : Baseline (28/12)
+|   |   |   RingerMode = Vibrate
+|   |   |   |   CalledHowManyTimes < 21
+|   |   |   |   |   TimeSinceLastCall < 62.13 : Picked (8/0)
+|   |   |   |   |   TimeSinceLastCall >= 62.13
+|   |   |   |   |   |   ChargingChangedMin < 10.56 : Picked (3/0)
+|   |   |   |   |   |   ChargingChangedMin >= 10.56 : Baseline (1/0)
+|   |   |   |   CalledHowManyTimes >= 21 : Baseline (6/0)
+|   |   |   RingerMode = Silent : Baseline (11/0)
+|   ScreenOn >= 0.5
+|   |   RingerMode = Normal
+|   |   |   TimeSinceLastCall < 7.47
+|   |   |   |   ChargingChangedMin < 22.46
+|   |   |   |   |   RingerModeChangedMin < 20.41
+|   |   |   |   |   |   TimeSinceLastCall < 5.75 : Picked (15/2)
+|   |   |   |   |   |   TimeSinceLastCall >= 5.75 : Baseline (2/0)
+|   |   |   |   |   RingerModeChangedMin >= 20.41
+|   |   |   |   |   |   ScreenChangedMin < 0.26 : Baseline (2/0)
+|   |   |   |   |   |   ScreenChangedMin >= 0.26 : Baseline (7/3)
+|   |   |   |   ChargingChangedMin >= 22.46
+|   |   |   |   |   MaxAcc < 0.04
+|   |   |   |   |   |   CalledHowManyTimes < 1.5 : Picked (6/0)
+|   |   |   |   |   |   CalledHowManyTimes >= 1.5 : Picked (24/6)
+|   |   |   |   |   MaxAcc >= 0.04 : Picked (34/0)
+|   |   |   TimeSinceLastCall >= 7.47
+|   |   |   |   ScreenChangedMin < 0.53
+|   |   |   |   |   ChargingChangedMin < 98.55
+|   |   |   |   |   |   Hour < 4 : Picked (8/0)
+|   |   |   |   |   |   Hour >= 4 : Picked (288/142)
+|   |   |   |   |   ChargingChangedMin >= 98.55
+|   |   |   |   |   |   ScreenChangedMin < 0.04 : Picked (10/1)
+|   |   |   |   |   |   ScreenChangedMin >= 0.04 : Baseline (78/12)
+|   |   |   |   ScreenChangedMin >= 0.53
+|   |   |   |   |   CalledHowManyTimes < 7.5
+|   |   |   |   |   |   Pitch < -0.5 : Picked (73.35/0)
+|   |   |   |   |   |   Pitch >= -0.5 : Picked (27.65/2)
+|   |   |   |   |   CalledHowManyTimes >= 7.5
+|   |   |   |   |   |   Hour < 9.5 : Baseline (3/0)
+|   |   |   |   |   |   Hour >= 9.5 : Picked (47/8)
+|   |   RingerMode = Vibrate
+|   |   |   ScreenChangedMin < 0.19
+|   |   |   |   CalledHowManyTimes < 30 : Picked (14/0)
+|   |   |   |   CalledHowManyTimes >= 30
+|   |   |   |   |   CalledHowManyTimes < 242.5
+|   |   |   |   |   |   TimeSinceLastCall < 195.85 : Picked (12/1)
+|   |   |   |   |   |   TimeSinceLastCall >= 195.85 : Baseline (5/0)
+|   |   |   |   |   CalledHowManyTimes >= 242.5 : Baseline (4/0)
+|   |   |   ScreenChangedMin >= 0.19
+|   |   |   |   Pitch < -101
+|   |   |   |   |   Pitch < -175 : Baseline (1/0)
+|   |   |   |   |   Pitch >= -175
+|   |   |   |   |   |   ChargingChangedMin < 169.14 : Picked (8/0)
+|   |   |   |   |   |   ChargingChangedMin >= 169.14 : Baseline (1/0)
+|   |   |   |   Pitch >= -101
+|   |   |   |   |   Hour < 12.5
+|   |   |   |   |   |   Pitch < -2.5 : Baseline (24/12)
+|   |   |   |   |   |   Pitch >= -2.5 : Baseline (23/1)
+|   |   |   |   |   Hour >= 12.5
+|   |   |   |   |   |   MaxAcc < 1.41 : Baseline (47/1)
+|   |   |   |   |   |   MaxAcc >= 1.41 : Baseline (9/3)
+|   |   RingerMode = Silent
+|   |   |   TimeSinceLastCall < 9.82
+|   |   |   |   RingerModeChangedMin < 199.89
+|   |   |   |   |   MaxAcc < 0.33 : Picked (12/0)
+|   |   |   |   |   MaxAcc >= 0.33 : Baseline (1/0)
+|   |   |   |   RingerModeChangedMin >= 199.89
+|   |   |   |   |   ChargingChangedMin < 317.92 : Baseline (3/0)
+|   |   |   |   |   ChargingChangedMin >= 317.92 : Picked (1/0)
+|   |   |   TimeSinceLastCall >= 9.82
+|   |   |   |   ScreenChangedMin < 1.02
+|   |   |   |   |   ChargingChangedMin < 320.65
+|   |   |   |   |   |   MaxAcc < 0 : Baseline (2/1)
+|   |   |   |   |   |   MaxAcc >= 0 : Baseline (31/0)
+|   |   |   |   |   ChargingChangedMin >= 320.65
+|   |   |   |   |   |   Pitch < -93.5 : Baseline (2/0)
+|   |   |   |   |   |   Pitch >= -93.5 : Picked (4/0)
+|   |   |   |   ScreenChangedMin >= 1.02 : Picked (5/0)
+
+Size of the tree : 198
+Max depth of tree: 7
+
+
+RandomTree
+==========
+
+ScreenOn < 0.5
+|   CalledHowManyTimes < 258.5
+|   |   ScreenChangedMin < 11.43
+|   |   |   MaxAcc < 0
+|   |   |   |   ChargingChangedMin < 10.18
+|   |   |   |   |   Day < 2.5
+|   |   |   |   |   |   TimeSinceLastCall < 15.53 : Picked (1/0)
+|   |   |   |   |   |   TimeSinceLastCall >= 15.53 : Baseline (1/0)
+|   |   |   |   |   Day >= 2.5 : Baseline (2/0)
+|   |   |   |   ChargingChangedMin >= 10.18 : Baseline (11/0)
+|   |   |   MaxAcc >= 0
+|   |   |   |   RingerMode = Normal
+|   |   |   |   |   LastCallPicked < 0.5
+|   |   |   |   |   |   TimeSinceLastCall < 1.65 : Baseline (8/1)
+|   |   |   |   |   |   TimeSinceLastCall >= 1.65 : Picked (276/37)
+|   |   |   |   |   LastCallPicked >= 0.5
+|   |   |   |   |   |   Pitch < 176 : Picked (731.87/52.97)
+|   |   |   |   |   |   Pitch >= 176 : Picked (12.13/6.03)
+|   |   |   |   RingerMode = Vibrate
+|   |   |   |   |   RingerModeChangedMin < 1.3 : Baseline (3/0)
+|   |   |   |   |   RingerModeChangedMin >= 1.3
+|   |   |   |   |   |   Day < 4.5 : Picked (85/8)
+|   |   |   |   |   |   Day >= 4.5 : Baseline (14/7)
+|   |   |   |   RingerMode = Silent
+|   |   |   |   |   Pitch < -11
+|   |   |   |   |   |   MaxAcc < 2.29 : Picked (40/4)
+|   |   |   |   |   |   MaxAcc >= 2.29 : Baseline (1/0)
+|   |   |   |   |   Pitch >= -11
+|   |   |   |   |   |   Hour < 12.5 : Picked (17/8)
+|   |   |   |   |   |   Hour >= 12.5 : Baseline (18/1)
+|   |   ScreenChangedMin >= 11.43
+|   |   |   ScreenChangedMin < 19.73
+|   |   |   |   CalledHowManyTimes < 18
+|   |   |   |   |   MaxAcc < 0.1
+|   |   |   |   |   |   ScreenChangedMin < 11.79 : Baseline (4/1)
+|   |   |   |   |   |   ScreenChangedMin >= 11.79 : Baseline (21/0)
+|   |   |   |   |   MaxAcc >= 0.1
+|   |   |   |   |   |   Pitch < 1.5 : Baseline (6/3)
+|   |   |   |   |   |   Pitch >= 1.5 : Picked (3/0)
+|   |   |   |   CalledHowManyTimes >= 18
+|   |   |   |   |   Pitch < 0.5
+|   |   |   |   |   |   RingerModeChangedMin < 40.55 : Baseline (3/0)
+|   |   |   |   |   |   RingerModeChangedMin >= 40.55 : Picked (4/1)
+|   |   |   |   |   Pitch >= 0.5 : Picked (6/0)
+|   |   |   ScreenChangedMin >= 19.73 : Baseline (81/0)
+|   CalledHowManyTimes >= 258.5
+|   |   ScreenChangedMin < 1.79
+|   |   |   CalledHowManyTimes < 868.5
+|   |   |   |   Day < 4.5
+|   |   |   |   |   MaxAcc < 0.43
+|   |   |   |   |   |   ScreenChangedMin < 0.42 : Baseline (7/0)
+|   |   |   |   |   |   ScreenChangedMin >= 0.42 : Baseline (14/6)
+|   |   |   |   |   MaxAcc >= 0.43 : Picked (7/0)
+|   |   |   |   Day >= 4.5 : Picked (7/0)
+|   |   |   CalledHowManyTimes >= 868.5 : Baseline (5/0)
+|   |   ScreenChangedMin >= 1.79
+|   |   |   MaxAcc < 0.17 : Baseline (70/0)
+|   |   |   MaxAcc >= 0.17
+|   |   |   |   RingerMode = Normal : Picked (1/0)
+|   |   |   |   RingerMode = Vibrate : Baseline (6/0)
+|   |   |   |   RingerMode = Silent : Baseline (0/0)
+ScreenOn >= 0.5
+|   Pitch < -8.5
+|   |   RingerModeChangedMin < 1.78
+|   |   |   CalledHowManyTimes < 2.5
+|   |   |   |   RingerMode = Normal
+|   |   |   |   |   Day < 4 : Baseline (4/0)
+|   |   |   |   |   Day >= 4 : Picked (3/0)
+|   |   |   |   RingerMode = Vibrate : Picked (1/0)
+|   |   |   |   RingerMode = Silent : Baseline (4/0)
+|   |   |   CalledHowManyTimes >= 2.5 : Baseline (21/0)
+|   |   RingerModeChangedMin >= 1.78
+|   |   |   LastCallPicked < 0.5
+|   |   |   |   Pitch < -163.5
+|   |   |   |   |   CalledHowManyTimes < 5.5 : Baseline (1.76/0.4)
+|   |   |   |   |   CalledHowManyTimes >= 5.5
+|   |   |   |   |   |   RingerModeChangedMin < 1114.22 : Baseline (20.44/0.08)
+|   |   |   |   |   |   RingerModeChangedMin >= 1114.22 : Picked (0.04/0)
+|   |   |   |   Pitch >= -163.5
+|   |   |   |   |   MaxAcc < 4.39
+|   |   |   |   |   |   RingerMode = Normal : Picked (111.31/50.99)
+|   |   |   |   |   |   RingerMode = Vibrate : Baseline (38/10)
+|   |   |   |   |   |   RingerMode = Silent : Baseline (28.33/13)
+|   |   |   |   |   MaxAcc >= 4.39 : Baseline (7.66/0)
+|   |   |   LastCallPicked >= 0.5
+|   |   |   |   MaxAcc < 0.03
+|   |   |   |   |   Proximity < 0.5
+|   |   |   |   |   |   CalledHowManyTimes < 4.5 : Baseline (34.35/11.35)
+|   |   |   |   |   |   CalledHowManyTimes >= 4.5 : Picked (75.75/23.38)
+|   |   |   |   |   Proximity >= 0.5
+|   |   |   |   |   |   ChargingChangedMin < 90.54 : Baseline (20.23/7.23)
+|   |   |   |   |   |   ChargingChangedMin >= 90.54 : Baseline (12.48/0.26)
+|   |   |   |   MaxAcc >= 0.03
+|   |   |   |   |   MaxAcc < 0.04 : Picked (22.49/0)
+|   |   |   |   |   MaxAcc >= 0.04
+|   |   |   |   |   |   MaxAcc < 5.07 : Picked (147.54/41.23)
+|   |   |   |   |   |   MaxAcc >= 5.07 : Picked (17.37/0)
+|   Pitch >= -8.5
+|   |   CalledHowManyTimes < 223
+|   |   |   Charging < 0.5
+|   |   |   |   ScreenChangedMin < 0.77
+|   |   |   |   |   ScreenChangedMin < 0.06
+|   |   |   |   |   |   TimeSinceLastCall < 662.78 : Picked (76/17)
+|   |   |   |   |   |   TimeSinceLastCall >= 662.78 : Picked (12/0)
+|   |   |   |   |   ScreenChangedMin >= 0.06
+|   |   |   |   |   |   ScreenChangedMin < 0.51 : Baseline (370.34/72.79)
+|   |   |   |   |   |   ScreenChangedMin >= 0.51 : Picked (64.14/29.26)
+|   |   |   |   ScreenChangedMin >= 0.77
+|   |   |   |   |   ChargingChangedMin < 83.92
+|   |   |   |   |   |   Pitch < -6 : Baseline (3.22/0.17)
+|   |   |   |   |   |   Pitch >= -6 : Picked (80.43/22.21)
+|   |   |   |   |   ChargingChangedMin >= 83.92
+|   |   |   |   |   |   Day < 4.5 : Picked (98.09/4.88)
+|   |   |   |   |   |   Day >= 4.5 : Baseline (6/3)
+|   |   |   Charging >= 0.5
+|   |   |   |   ChargingChangedMin < 838.11
+|   |   |   |   |   MaxAcc < 0.05
+|   |   |   |   |   |   ScreenChangedMin < 0.05 : Picked (4/0)
+|   |   |   |   |   |   ScreenChangedMin >= 0.05 : Baseline (59/0)
+|   |   |   |   |   MaxAcc >= 0.05
+|   |   |   |   |   |   MaxAcc < 0.08 : Picked (3/0)
+|   |   |   |   |   |   MaxAcc >= 0.08 : Baseline (23.02/6.51)
+|   |   |   |   ChargingChangedMin >= 838.11
+|   |   |   |   |   RingerMode = Normal : Picked (4/0)
+|   |   |   |   |   RingerMode = Vibrate : Baseline (0/0)
+|   |   |   |   |   RingerMode = Silent : Baseline (1/0)
+|   |   CalledHowManyTimes >= 223
+|   |   |   ScreenChangedMin < 5.23
+|   |   |   |   CalledHowManyTimes < 291.5
+|   |   |   |   |   LastCallPicked < 0.5 : Baseline (20/0)
+|   |   |   |   |   LastCallPicked >= 0.5
+|   |   |   |   |   |   ScreenChangedMin < 0.6 : Picked (3/0)
+|   |   |   |   |   |   ScreenChangedMin >= 0.6 : Baseline (5/0)
+|   |   |   |   CalledHowManyTimes >= 291.5
+|   |   |   |   |   TimeSinceLastCall < 48.77 : Baseline (78/0)
+|   |   |   |   |   TimeSinceLastCall >= 48.77
+|   |   |   |   |   |   LastCallPicked < 0.5 : Baseline (29/0)
+|   |   |   |   |   |   LastCallPicked >= 0.5 : Baseline (18/2)
+|   |   |   ScreenChangedMin >= 5.23
+|   |   |   |   Pitch < 2.5 : Picked (4/0)
+|   |   |   |   Pitch >= 2.5 : Baseline (1/0)
+
+Size of the tree : 142
+Max depth of tree: 7
+
+
+RandomTree
+==========
+
+CalledHowManyTimes < 258.5
+|   LastCallPicked < 0.5
+|   |   Pitch < -9.5
+|   |   |   ScreenOn < 0.5
+|   |   |   |   MaxAcc < 0.01
+|   |   |   |   |   Pitch < -59
+|   |   |   |   |   |   MaxAcc < 0 : Baseline (7.62/0)
+|   |   |   |   |   |   MaxAcc >= 0 : Baseline (17/8)
+|   |   |   |   |   Pitch >= -59
+|   |   |   |   |   |   Hour < 8 : Baseline (2.17/0)
+|   |   |   |   |   |   Hour >= 8 : Picked (24.51/2.51)
+|   |   |   |   MaxAcc >= 0.01
+|   |   |   |   |   CalledHowManyTimes < 2.5
+|   |   |   |   |   |   Pitch < -72.5 : Picked (11/5)
+|   |   |   |   |   |   Pitch >= -72.5 : Picked (26/0)
+|   |   |   |   |   CalledHowManyTimes >= 2.5
+|   |   |   |   |   |   ChargingChangedMin < 118.94 : Picked (76/0)
+|   |   |   |   |   |   ChargingChangedMin >= 118.94 : Picked (19.98/1.98)
+|   |   |   ScreenOn >= 0.5
+|   |   |   |   RingerModeChangedMin < 5.98
+|   |   |   |   |   MaxAcc < 0.06
+|   |   |   |   |   |   ChargingChangedMin < 5.1 : Baseline (3/0)
+|   |   |   |   |   |   ChargingChangedMin >= 5.1 : Picked (4/1)
+|   |   |   |   |   MaxAcc >= 0.06 : Picked (12/0)
+|   |   |   |   RingerModeChangedMin >= 5.98
+|   |   |   |   |   TimeSinceLastCall < 20.11
+|   |   |   |   |   |   TimeSinceLastCall < 0.57 : Baseline (9.33/0)
+|   |   |   |   |   |   TimeSinceLastCall >= 0.57 : Baseline (44.53/8.6)
+|   |   |   |   |   TimeSinceLastCall >= 20.11
+|   |   |   |   |   |   ScreenChangedMin < 0.83 : Baseline (49.95/20)
+|   |   |   |   |   |   ScreenChangedMin >= 0.83 : Picked (19.63/3)
+|   |   Pitch >= -9.5
+|   |   |   TimeSinceLastCall < 2.22
+|   |   |   |   RingerModeChangedMin < 1.63 : Picked (1/0)
+|   |   |   |   RingerModeChangedMin >= 1.63
+|   |   |   |   |   ScreenChangedMin < 0.19
+|   |   |   |   |   |   CalledHowManyTimes < 44.5 : Baseline (9.02/1)
+|   |   |   |   |   |   CalledHowManyTimes >= 44.5 : Picked (3/1)
+|   |   |   |   |   ScreenChangedMin >= 0.19 : Baseline (71.72/0)
+|   |   |   TimeSinceLastCall >= 2.22
+|   |   |   |   MaxAcc < 0.08
+|   |   |   |   |   ScreenChangedMin < 11.58
+|   |   |   |   |   |   CalledHowManyTimes < 212 : Baseline (321.1/120.05)
+|   |   |   |   |   |   CalledHowManyTimes >= 212 : Baseline (13/0)
+|   |   |   |   |   ScreenChangedMin >= 11.58 : Baseline (47.67/0)
+|   |   |   |   MaxAcc >= 0.08
+|   |   |   |   |   ScreenChangedMin < 0.77
+|   |   |   |   |   |   RingerModeChangedMin < 6.85 : Baseline (19/3)
+|   |   |   |   |   |   RingerModeChangedMin >= 6.85 : Picked (109.72/38.05)
+|   |   |   |   |   ScreenChangedMin >= 0.77
+|   |   |   |   |   |   Pitch < 11 : Picked (64.13/2)
+|   |   |   |   |   |   Pitch >= 11 : Picked (18.92/5)
+|   LastCallPicked >= 0.5
+|   |   TimeSinceLastCall < 66.68
+|   |   |   ScreenOn < 0.5
+|   |   |   |   Pitch < -1.5
+|   |   |   |   |   TimeSinceLastCall < 11.35
+|   |   |   |   |   |   Pitch < -11.5 : Picked (104.47/0)
+|   |   |   |   |   |   Pitch >= -11.5 : Picked (22.53/3)
+|   |   |   |   |   TimeSinceLastCall >= 11.35
+|   |   |   |   |   |   Pitch < -159 : Baseline (5.05/2)
+|   |   |   |   |   |   Pitch >= -159 : Picked (184.76/20.76)
+|   |   |   |   Pitch >= -1.5
+|   |   |   |   |   MaxAcc < 0.03
+|   |   |   |   |   |   ScreenChangedMin < 10.58 : Picked (62.8/14.4)
+|   |   |   |   |   |   ScreenChangedMin >= 10.58 : Baseline (12.4/0)
+|   |   |   |   |   MaxAcc >= 0.03
+|   |   |   |   |   |   ChargingChangedMin < 39.71 : Picked (47.4/3)
+|   |   |   |   |   |   ChargingChangedMin >= 39.71 : Picked (87.6/18.4)
+|   |   |   ScreenOn >= 0.5
+|   |   |   |   ScreenChangedMin < 0.06
+|   |   |   |   |   Proximity < 0.5
+|   |   |   |   |   |   ChargingChangedMin < 241.96 : Picked (77/8)
+|   |   |   |   |   |   ChargingChangedMin >= 241.96 : Baseline (3/0)
+|   |   |   |   |   Proximity >= 0.5 : Picked (38/0)
+|   |   |   |   ScreenChangedMin >= 0.06
+|   |   |   |   |   MaxAcc < 0.03
+|   |   |   |   |   |   ChargingChangedMin < 85 : Baseline (98/36)
+|   |   |   |   |   |   ChargingChangedMin >= 85 : Picked (52/19)
+|   |   |   |   |   MaxAcc >= 0.03
+|   |   |   |   |   |   Proximity < 0.5 : Picked (139.71/25)
+|   |   |   |   |   |   Proximity >= 0.5 : Baseline (56.29/26.29)
+|   |   TimeSinceLastCall >= 66.68
+|   |   |   MaxAcc < 0.03
+|   |   |   |   RingerMode = Normal
+|   |   |   |   |   Day < 2.5
+|   |   |   |   |   |   MaxAcc < 0.02 : Baseline (85/38)
+|   |   |   |   |   |   MaxAcc >= 0.02 : Picked (18/2)
+|   |   |   |   |   Day >= 2.5
+|   |   |   |   |   |   MaxAcc < 0 : Picked (51/8)
+|   |   |   |   |   |   MaxAcc >= 0 : Picked (66/27)
+|   |   |   |   RingerMode = Vibrate
+|   |   |   |   |   MaxAcc < 0.02
+|   |   |   |   |   |   Hour < 10.5 : Picked (14/3)
+|   |   |   |   |   |   Hour >= 10.5 : Baseline (42/10)
+|   |   |   |   |   MaxAcc >= 0.02 : Baseline (15/0)
+|   |   |   |   RingerMode = Silent
+|   |   |   |   |   ChargingChangedMin < 89.82
+|   |   |   |   |   |   Hour < 16 : Baseline (6/0)
+|   |   |   |   |   |   Hour >= 16 : Baseline (6/3)
+|   |   |   |   |   ChargingChangedMin >= 89.82 : Baseline (24/0)
+|   |   |   MaxAcc >= 0.03
+|   |   |   |   Pitch < 64.5
+|   |   |   |   |   RingerMode = Normal
+|   |   |   |   |   |   CalledHowManyTimes < 7.5 : Picked (217.22/22.91)
+|   |   |   |   |   |   CalledHowManyTimes >= 7.5 : Picked (110.65/26)
+|   |   |   |   |   RingerMode = Vibrate
+|   |   |   |   |   |   ScreenChangedMin < 0.79 : Baseline (25/10)
+|   |   |   |   |   |   ScreenChangedMin >= 0.79 : Picked (12/1)
+|   |   |   |   |   RingerMode = Silent
+|   |   |   |   |   |   ScreenOn < 0.5 : Picked (3/0)
+|   |   |   |   |   |   ScreenOn >= 0.5 : Baseline (11/1)
+|   |   |   |   Pitch >= 64.5
+|   |   |   |   |   ChargingChangedMin < 398.39
+|   |   |   |   |   |   ScreenChangedMin < 0.7 : Baseline (23.17/7.17)
+|   |   |   |   |   |   ScreenChangedMin >= 0.7 : Picked (6.78/2)
+|   |   |   |   |   ChargingChangedMin >= 398.39
+|   |   |   |   |   |   Hour < 8.5 : Baseline (0.17/0.09)
+|   |   |   |   |   |   Hour >= 8.5 : Picked (6/0)
+CalledHowManyTimes >= 258.5
+|   CalledHowManyTimes < 779
+|   |   ChargingChangedMin < 21.89
+|   |   |   CalledHowManyTimes < 633
+|   |   |   |   MaxAcc < 0.01
+|   |   |   |   |   LastCallPicked < 0.5 : Baseline (11/0)
+|   |   |   |   |   LastCallPicked >= 0.5
+|   |   |   |   |   |   Day < 2 : Picked (1/0)
+|   |   |   |   |   |   Day >= 2 : Baseline (2/0)
+|   |   |   |   MaxAcc >= 0.01 : Baseline (89/0)
+|   |   |   CalledHowManyTimes >= 633
+|   |   |   |   CalledHowManyTimes < 660
+|   |   |   |   |   ChargingChangedMin < 9.79 : Picked (3/0)
+|   |   |   |   |   ChargingChangedMin >= 9.79 : Baseline (2/0)
+|   |   |   |   CalledHowManyTimes >= 660
+|   |   |   |   |   Hour < 20
+|   |   |   |   |   |   LastCallPicked < 0.5 : Baseline (23/0)
+|   |   |   |   |   |   LastCallPicked >= 0.5 : Baseline (3/1)
+|   |   |   |   |   Hour >= 20 : Picked (1/0)
+|   |   ChargingChangedMin >= 21.89
+|   |   |   CalledHowManyTimes < 605.5
+|   |   |   |   Hour < 9 : Baseline (31/0)
+|   |   |   |   Hour >= 9
+|   |   |   |   |   MaxAcc < 0.33
+|   |   |   |   |   |   Hour < 20 : Baseline (30/12)
+|   |   |   |   |   |   Hour >= 20 : Baseline (11/0)
+|   |   |   |   |   MaxAcc >= 0.33
+|   |   |   |   |   |   Hour < 15 : Baseline (1/0)
+|   |   |   |   |   |   Hour >= 15 : Picked (5/0)
+|   |   |   CalledHowManyTimes >= 605.5
+|   |   |   |   ChargingChangedMin < 39.36
+|   |   |   |   |   TimeSinceLastCall < 96.73
+|   |   |   |   |   |   Day < 2 : Baseline (2/1)
+|   |   |   |   |   |   Day >= 2 : Baseline (2/0)
+|   |   |   |   |   TimeSinceLastCall >= 96.73 : Picked (3/0)
+|   |   |   |   ChargingChangedMin >= 39.36 : Picked (4/0)
+|   CalledHowManyTimes >= 779 : Baseline (37/0)
+
+Size of the tree : 157
+Max depth of tree: 7
+
+
+RandomTree
+==========
+
+RingerMode = Normal
+|   CalledHowManyTimes < 217.5
+|   |   MaxAcc < 0.02
+|   |   |   Pitch < -2.5
+|   |   |   |   CalledHowManyTimes < 45
+|   |   |   |   |   Pitch < -103
+|   |   |   |   |   |   Pitch < -144 : Picked (21.06/8.49)
+|   |   |   |   |   |   Pitch >= -144 : Baseline (24.22/2.66)
+|   |   |   |   |   Pitch >= -103
+|   |   |   |   |   |   Pitch < -27.5 : Picked (85.31/21.98)
+|   |   |   |   |   |   Pitch >= -27.5 : Picked (96.9/43.24)
+|   |   |   |   CalledHowManyTimes >= 45
+|   |   |   |   |   RingerModeChangedMin < 63.95
+|   |   |   |   |   |   ScreenChangedMin < 6.43 : Picked (49.96/8.96)
+|   |   |   |   |   |   ScreenChangedMin >= 6.43 : Baseline (6/0)
+|   |   |   |   |   RingerModeChangedMin >= 63.95 : Picked (15/0)
+|   |   |   Pitch >= -2.5
+|   |   |   |   ScreenChangedMin < 20.15
+|   |   |   |   |   ScreenChangedMin < 0.51
+|   |   |   |   |   |   ScreenChangedMin < 0.09 : Picked (48.52/11.52)
+|   |   |   |   |   |   ScreenChangedMin >= 0.09 : Baseline (114.08/24.52)
+|   |   |   |   |   ScreenChangedMin >= 0.51
+|   |   |   |   |   |   TimeSinceLastCall < 5.99 : Baseline (15.56/3.04)
+|   |   |   |   |   |   TimeSinceLastCall >= 5.99 : Picked (128.29/37.08)
+|   |   |   |   ScreenChangedMin >= 20.15 : Baseline (18.08/0)
+|   |   MaxAcc >= 0.02
+|   |   |   LastCallPicked < 0.5
+|   |   |   |   Pitch < 1.5
+|   |   |   |   |   ScreenOn < 0.5
+|   |   |   |   |   |   RingerModeChangedMin < 0.94 : Baseline (2/0)
+|   |   |   |   |   |   RingerModeChangedMin >= 0.94 : Picked (203.81/34.81)
+|   |   |   |   |   ScreenOn >= 0.5
+|   |   |   |   |   |   TimeSinceLastCall < 1.17 : Baseline (15.81/0)
+|   |   |   |   |   |   TimeSinceLastCall >= 1.17 : Picked (162.97/72.27)
+|   |   |   |   Pitch >= 1.5
+|   |   |   |   |   ChargingChangedMin < 6.87 : Baseline (9/0)
+|   |   |   |   |   ChargingChangedMin >= 6.87
+|   |   |   |   |   |   RingerModeChangedMin < 31.75 : Picked (27/4)
+|   |   |   |   |   |   RingerModeChangedMin >= 31.75 : Baseline (55.42/20.3)
+|   |   |   LastCallPicked >= 0.5
+|   |   |   |   Pitch < 20.5
+|   |   |   |   |   ScreenOn < 0.5
+|   |   |   |   |   |   ScreenChangedMin < 3.65 : Picked (411/10.89)
+|   |   |   |   |   |   ScreenChangedMin >= 3.65 : Picked (66/20)
+|   |   |   |   |   ScreenOn >= 0.5
+|   |   |   |   |   |   ScreenChangedMin < 0.04 : Picked (56/0)
+|   |   |   |   |   |   ScreenChangedMin >= 0.04 : Picked (258.11/95.89)
+|   |   |   |   Pitch >= 20.5
+|   |   |   |   |   RingerModeChangedMin < 20.45
+|   |   |   |   |   |   Hour < 10.5 : Picked (3/1)
+|   |   |   |   |   |   Hour >= 10.5 : Picked (27/0)
+|   |   |   |   |   RingerModeChangedMin >= 20.45
+|   |   |   |   |   |   ScreenChangedMin < 0.49 : Baseline (38.11/14)
+|   |   |   |   |   |   ScreenChangedMin >= 0.49 : Picked (30.78/5.11)
+|   CalledHowManyTimes >= 217.5
+|   |   LastCallPicked < 0.5
+|   |   |   ScreenChangedMin < 0.13 : Baseline (51/0)
+|   |   |   ScreenChangedMin >= 0.13
+|   |   |   |   ScreenOn < 0.5
+|   |   |   |   |   Hour < 18.5
+|   |   |   |   |   |   Day < 0.5 : Baseline (13/0)
+|   |   |   |   |   |   Day >= 0.5 : Baseline (49/9)
+|   |   |   |   |   Hour >= 18.5 : Picked (10/0)
+|   |   |   |   ScreenOn >= 0.5
+|   |   |   |   |   MaxAcc < 0.1 : Baseline (32/0)
+|   |   |   |   |   MaxAcc >= 0.1
+|   |   |   |   |   |   RingerModeChangedMin < 25.39 : Baseline (3/0)
+|   |   |   |   |   |   RingerModeChangedMin >= 25.39 : Picked (3/0)
+|   |   LastCallPicked >= 0.5
+|   |   |   ChargingChangedMin < 16.67
+|   |   |   |   RingerModeChangedMin < 5.57 : Picked (3/0)
+|   |   |   |   RingerModeChangedMin >= 5.57
+|   |   |   |   |   CalledHowManyTimes < 237.5
+|   |   |   |   |   |   TimeSinceLastCall < 48.29 : Baseline (3/0)
+|   |   |   |   |   |   TimeSinceLastCall >= 48.29 : Picked (3/1)
+|   |   |   |   |   CalledHowManyTimes >= 237.5 : Baseline (16/0)
+|   |   |   ChargingChangedMin >= 16.67
+|   |   |   |   CalledHowManyTimes < 224.5
+|   |   |   |   |   TimeSinceLastCall < 238.25 : Baseline (7/0)
+|   |   |   |   |   TimeSinceLastCall >= 238.25 : Picked (1/0)
+|   |   |   |   CalledHowManyTimes >= 224.5
+|   |   |   |   |   CalledHowManyTimes < 292.5 : Picked (17/0)
+|   |   |   |   |   CalledHowManyTimes >= 292.5
+|   |   |   |   |   |   RingerModeChangedMin < 13.69 : Baseline (2/0)
+|   |   |   |   |   |   RingerModeChangedMin >= 13.69 : Picked (14/2)
+RingerMode = Vibrate
+|   Hour < 9.5
+|   |   MaxAcc < 0.15
+|   |   |   CalledHowManyTimes < 185.5
+|   |   |   |   ScreenOn < 0.5
+|   |   |   |   |   CalledHowManyTimes < 44.5
+|   |   |   |   |   |   ScreenChangedMin < 40.74 : Picked (16/1)
+|   |   |   |   |   |   ScreenChangedMin >= 40.74 : Baseline (3/0)
+|   |   |   |   |   CalledHowManyTimes >= 44.5
+|   |   |   |   |   |   LastCallPicked < 0.5 : Baseline (10/0)
+|   |   |   |   |   |   LastCallPicked >= 0.5 : Picked (4/0)
+|   |   |   |   ScreenOn >= 0.5
+|   |   |   |   |   MaxAcc < 0.06
+|   |   |   |   |   |   TimeSinceLastCall < 2.89 : Baseline (7/1)
+|   |   |   |   |   |   TimeSinceLastCall >= 2.89 : Baseline (16/0)
+|   |   |   |   |   MaxAcc >= 0.06 : Picked (3/0)
+|   |   |   CalledHowManyTimes >= 185.5 : Baseline (39/0)
+|   |   MaxAcc >= 0.15 : Baseline (44/0)
+|   Hour >= 9.5
+|   |   ScreenOn < 0.5
+|   |   |   ScreenChangedMin < 10.68
+|   |   |   |   RingerModeChangedMin < 24.4
+|   |   |   |   |   Hour < 17.5
+|   |   |   |   |   |   TimeSinceLastCall < 1121.33 : Picked (33/1)
+|   |   |   |   |   |   TimeSinceLastCall >= 1121.33 : Baseline (1/0)
+|   |   |   |   |   Hour >= 17.5
+|   |   |   |   |   |   Pitch < 1 : Baseline (4/1)
+|   |   |   |   |   |   Pitch >= 1 : Picked (2/0)
+|   |   |   |   RingerModeChangedMin >= 24.4
+|   |   |   |   |   CalledHowManyTimes < 1.5
+|   |   |   |   |   |   LastCallPicked < 0.5 : Baseline (2/1)
+|   |   |   |   |   |   LastCallPicked >= 0.5 : Picked (6/0)
+|   |   |   |   |   CalledHowManyTimes >= 1.5 : Picked (42/0)
+|   |   |   ScreenChangedMin >= 10.68 : Baseline (5/0)
+|   |   ScreenOn >= 0.5
+|   |   |   Day < 2.5
+|   |   |   |   Pitch < -27.5
+|   |   |   |   |   Pitch < -171.5 : Baseline (2/0)
+|   |   |   |   |   Pitch >= -171.5
+|   |   |   |   |   |   TimeSinceLastCall < 78.68 : Picked (13/5)
+|   |   |   |   |   |   TimeSinceLastCall >= 78.68 : Picked (13/0)
+|   |   |   |   Pitch >= -27.5
+|   |   |   |   |   RingerModeChangedMin < 18.62
+|   |   |   |   |   |   ScreenChangedMin < 0.1 : Baseline (5/0)
+|   |   |   |   |   |   ScreenChangedMin >= 0.1 : Picked (23/6)
+|   |   |   |   |   RingerModeChangedMin >= 18.62
+|   |   |   |   |   |   ChargingChangedMin < 30.95 : Baseline (16/0)
+|   |   |   |   |   |   ChargingChangedMin >= 30.95 : Baseline (36/10)
+|   |   |   Day >= 2.5
+|   |   |   |   ScreenChangedMin < 0.69
+|   |   |   |   |   RingerModeChangedMin < 0.08 : Picked (2/0)
+|   |   |   |   |   RingerModeChangedMin >= 0.08
+|   |   |   |   |   |   ChargingChangedMin < 40.49 : Baseline (49/7)
+|   |   |   |   |   |   ChargingChangedMin >= 40.49 : Baseline (43/0)
+|   |   |   |   ScreenChangedMin >= 0.69
+|   |   |   |   |   TimeSinceLastCall < 2.99 : Baseline (5/0)
+|   |   |   |   |   TimeSinceLastCall >= 2.99
+|   |   |   |   |   |   CalledHowManyTimes < 162.5 : Picked (14/1)
+|   |   |   |   |   |   CalledHowManyTimes >= 162.5 : Baseline (4/0)
+RingerMode = Silent
+|   Pitch < -13.5
+|   |   Day < 5.5
+|   |   |   TimeSinceLastCall < 49.36
+|   |   |   |   MaxAcc < 0.01
+|   |   |   |   |   RingerModeChangedMin < 73.51
+|   |   |   |   |   |   MaxAcc < 0 : Picked (1/0)
+|   |   |   |   |   |   MaxAcc >= 0 : Baseline (6/0)
+|   |   |   |   |   RingerModeChangedMin >= 73.51 : Picked (2/0)
+|   |   |   |   MaxAcc >= 0.01
+|   |   |   |   |   ChargingChangedMin < 140.21
+|   |   |   |   |   |   CalledHowManyTimes < 231.5 : Picked (41/0)
+|   |   |   |   |   |   CalledHowManyTimes >= 231.5 : Baseline (1/0)
+|   |   |   |   |   ChargingChangedMin >= 140.21
+|   |   |   |   |   |   ChargingChangedMin < 363.5 : Baseline (5/1)
+|   |   |   |   |   |   ChargingChangedMin >= 363.5 : Picked (1/0)
+|   |   |   TimeSinceLastCall >= 49.36
+|   |   |   |   Day < 3.5 : Baseline (17.63/0)
+|   |   |   |   Day >= 3.5
+|   |   |   |   |   ScreenChangedMin < 11.53
+|   |   |   |   |   |   RingerModeChangedMin < 887.5 : Picked (8/0)
+|   |   |   |   |   |   RingerModeChangedMin >= 887.5 : Baseline (1/0)
+|   |   |   |   |   ScreenChangedMin >= 11.53 : Baseline (3/0)
+|   |   Day >= 5.5 : Baseline (14/0)
+|   Pitch >= -13.5
+|   |   ChargingChangedMin < 81.22
+|   |   |   CalledHowManyTimes < 34.5
+|   |   |   |   ScreenChangedMin < 0.05 : Picked (2/0)
+|   |   |   |   ScreenChangedMin >= 0.05
+|   |   |   |   |   Day < 5.5 : Baseline (81.37/0)
+|   |   |   |   |   Day >= 5.5
+|   |   |   |   |   |   ChargingChangedMin < 22.6 : Baseline (2/0)
+|   |   |   |   |   |   ChargingChangedMin >= 22.6 : Picked (1/0)
+|   |   |   CalledHowManyTimes >= 34.5
+|   |   |   |   Charging < 0.5
+|   |   |   |   |   Day < 2.5
+|   |   |   |   |   |   MaxAcc < 0.02 : Baseline (3/0)
+|   |   |   |   |   |   MaxAcc >= 0.02 : Picked (7/1)
+|   |   |   |   |   Day >= 2.5
+|   |   |   |   |   |   ChargingChangedMin < 0.52 : Baseline (2/1)
+|   |   |   |   |   |   ChargingChangedMin >= 0.52 : Baseline (22/0)
+|   |   |   |   Charging >= 0.5 : Baseline (15/0)
+|   |   ChargingChangedMin >= 81.22
+|   |   |   TimeSinceLastCall < 2.39 : Baseline (16/0)
+|   |   |   TimeSinceLastCall >= 2.39
+|   |   |   |   Proximity < 0.5
+|   |   |   |   |   Pitch < -3 : Baseline (5/0)
+|   |   |   |   |   Pitch >= -3
+|   |   |   |   |   |   Day < 2.5 : Baseline (17/7)
+|   |   |   |   |   |   Day >= 2.5 : Picked (27/6)
+|   |   |   |   Proximity >= 0.5
+|   |   |   |   |   TimeSinceLastCall < 222.05 : Baseline (15/0)
+|   |   |   |   |   TimeSinceLastCall >= 222.05
+|   |   |   |   |   |   ScreenChangedMin < 0.46 : Baseline (3/0)
+|   |   |   |   |   |   ScreenChangedMin >= 0.46 : Picked (2/0)
+
+Size of the tree : 200
+Max depth of tree: 7
+
+
+RandomTree
+==========
+
+RingerMode = Normal
+|   ScreenChangedMin < 0.51
+|   |   ScreenOn < 0.5
+|   |   |   RingerModeChangedMin < 0.57
+|   |   |   |   ScreenChangedMin < 0.2 : Baseline (8/0)
+|   |   |   |   ScreenChangedMin >= 0.2
+|   |   |   |   |   Pitch < -23.5 : Picked (1/0)
+|   |   |   |   |   Pitch >= -23.5 : Baseline (1/0)
+|   |   |   RingerModeChangedMin >= 0.57
+|   |   |   |   MaxAcc < 4.22
+|   |   |   |   |   ScreenChangedMin < 0.16
+|   |   |   |   |   |   LastCallPicked < 0.5 : Picked (25/1)
+|   |   |   |   |   |   LastCallPicked >= 0.5 : Picked (81/0)
+|   |   |   |   |   ScreenChangedMin >= 0.16
+|   |   |   |   |   |   ScreenChangedMin < 0.44 : Picked (192/23)
+|   |   |   |   |   |   ScreenChangedMin >= 0.44 : Picked (48/1)
+|   |   |   |   MaxAcc >= 4.22
+|   |   |   |   |   TimeSinceLastCall < 3.13
+|   |   |   |   |   |   Day < 2 : Picked (2/0)
+|   |   |   |   |   |   Day >= 2 : Baseline (6/0)
+|   |   |   |   |   TimeSinceLastCall >= 3.13
+|   |   |   |   |   |   Pitch < -153.5 : Baseline (2.04/0)
+|   |   |   |   |   |   Pitch >= -153.5 : Picked (52.96/5.96)
+|   |   ScreenOn >= 0.5
+|   |   |   TimeSinceLastCall < 1.04
+|   |   |   |   ChargingChangedMin < 39.77 : Baseline (22/0)
+|   |   |   |   ChargingChangedMin >= 39.77
+|   |   |   |   |   LastCallPicked < 0.5 : Baseline (9/0)
+|   |   |   |   |   LastCallPicked >= 0.5 : Picked (3/0)
+|   |   |   TimeSinceLastCall >= 1.04
+|   |   |   |   ScreenChangedMin < 0.09
+|   |   |   |   |   ChargingChangedMin < 14.51
+|   |   |   |   |   |   LastCallPicked < 0.5 : Baseline (48/8)
+|   |   |   |   |   |   LastCallPicked >= 0.5 : Picked (58/16)
+|   |   |   |   |   ChargingChangedMin >= 14.51
+|   |   |   |   |   |   CalledHowManyTimes < 265.5 : Picked (159/28)
+|   |   |   |   |   |   CalledHowManyTimes >= 265.5 : Baseline (17/2)
+|   |   |   |   ScreenChangedMin >= 0.09
+|   |   |   |   |   LastCallPicked < 0.5
+|   |   |   |   |   |   MaxAcc < 0 : Picked (2/0)
+|   |   |   |   |   |   MaxAcc >= 0 : Baseline (143/19)
+|   |   |   |   |   LastCallPicked >= 0.5
+|   |   |   |   |   |   MaxAcc < 0.01 : Baseline (63/4)
+|   |   |   |   |   |   MaxAcc >= 0.01 : Baseline (169/66)
+|   ScreenChangedMin >= 0.51
+|   |   MaxAcc < 0.04
+|   |   |   ScreenChangedMin < 5.48
+|   |   |   |   CalledHowManyTimes < 73
+|   |   |   |   |   ScreenOn < 0.5
+|   |   |   |   |   |   Pitch < -171 : Baseline (6.06/1.06)
+|   |   |   |   |   |   Pitch >= -171 : Picked (181.94/18)
+|   |   |   |   |   ScreenOn >= 0.5
+|   |   |   |   |   |   MaxAcc < 0.04 : Picked (86/36)
+|   |   |   |   |   |   MaxAcc >= 0.04 : Picked (9/0)
+|   |   |   |   CalledHowManyTimes >= 73
+|   |   |   |   |   Pitch < -2
+|   |   |   |   |   |   MaxAcc < 0.01 : Picked (15/1)
+|   |   |   |   |   |   MaxAcc >= 0.01 : Baseline (10/3)
+|   |   |   |   |   Pitch >= -2
+|   |   |   |   |   |   TimeSinceLastCall < 435.77 : Baseline (47/7)
+|   |   |   |   |   |   TimeSinceLastCall >= 435.77 : Picked (3/0)
+|   |   |   ScreenChangedMin >= 5.48
+|   |   |   |   MaxAcc < 0
+|   |   |   |   |   Day < 1.5
+|   |   |   |   |   |   MaxAcc < 0 : Baseline (2/1)
+|   |   |   |   |   |   MaxAcc >= 0 : Baseline (3/0)
+|   |   |   |   |   Day >= 1.5 : Baseline (28/0)
+|   |   |   |   MaxAcc >= 0
+|   |   |   |   |   RingerModeChangedMin < 107.57
+|   |   |   |   |   |   ScreenChangedMin < 9.07 : Baseline (20/7)
+|   |   |   |   |   |   ScreenChangedMin >= 9.07 : Baseline (50/1)
+|   |   |   |   |   RingerModeChangedMin >= 107.57
+|   |   |   |   |   |   Pitch < 6 : Picked (24.67/3)
+|   |   |   |   |   |   Pitch >= 6 : Baseline (12.33/0.33)
+|   |   MaxAcc >= 0.04
+|   |   |   LastCallPicked < 0.5
+|   |   |   |   MaxAcc < 0.29
+|   |   |   |   |   ChargingChangedMin < 17.67
+|   |   |   |   |   |   RingerModeChangedMin < 9.05 : Baseline (24/4)
+|   |   |   |   |   |   RingerModeChangedMin >= 9.05 : Picked (10/3)
+|   |   |   |   |   ChargingChangedMin >= 17.67
+|   |   |   |   |   |   ScreenChangedMin < 3.75 : Picked (43/4)
+|   |   |   |   |   |   ScreenChangedMin >= 3.75 : Picked (26/11)
+|   |   |   |   MaxAcc >= 0.29
+|   |   |   |   |   TimeSinceLastCall < 6.58
+|   |   |   |   |   |   ScreenChangedMin < 1.06 : Baseline (6/0)
+|   |   |   |   |   |   ScreenChangedMin >= 1.06 : Picked (8/2)
+|   |   |   |   |   TimeSinceLastCall >= 6.58
+|   |   |   |   |   |   ScreenChangedMin < 20.77 : Picked (98/5)
+|   |   |   |   |   |   ScreenChangedMin >= 20.77 : Baseline (2/0)
+|   |   |   LastCallPicked >= 0.5
+|   |   |   |   TimeSinceLastCall < 95.86
+|   |   |   |   |   CalledHowManyTimes < 155.5
+|   |   |   |   |   |   ChargingChangedMin < 509.3 : Picked (242/13)
+|   |   |   |   |   |   ChargingChangedMin >= 509.3 : Picked (25/5)
+|   |   |   |   |   CalledHowManyTimes >= 155.5
+|   |   |   |   |   |   ChargingChangedMin < 7.31 : Baseline (2/0)
+|   |   |   |   |   |   ChargingChangedMin >= 7.31 : Picked (15/4)
+|   |   |   |   TimeSinceLastCall >= 95.86
+|   |   |   |   |   ScreenChangedMin < 0.53 : Baseline (1/0)
+|   |   |   |   |   ScreenChangedMin >= 0.53 : Picked (139/0)
+RingerMode = Vibrate
+|   Pitch < -7.5
+|   |   CalledHowManyTimes < 249
+|   |   |   ScreenOn < 0.5
+|   |   |   |   Pitch < -87.5
+|   |   |   |   |   Day < 0.5 : Picked (1/0)
+|   |   |   |   |   Day >= 0.5 : Baseline (3.09/0)
+|   |   |   |   Pitch >= -87.5
+|   |   |   |   |   ScreenChangedMin < 4.84 : Picked (39/0)
+|   |   |   |   |   ScreenChangedMin >= 4.84
+|   |   |   |   |   |   Pitch < -29.5 : Picked (2.38/0.38)
+|   |   |   |   |   |   Pitch >= -29.5 : Baseline (3.57/0)
+|   |   |   ScreenOn >= 0.5
+|   |   |   |   ScreenChangedMin < 0.06 : Picked (17/0)
+|   |   |   |   ScreenChangedMin >= 0.06
+|   |   |   |   |   ScreenChangedMin < 0.56
+|   |   |   |   |   |   CalledHowManyTimes < 3.5 : Baseline (18/0)
+|   |   |   |   |   |   CalledHowManyTimes >= 3.5 : Baseline (31/13)
+|   |   |   |   |   ScreenChangedMin >= 0.56
+|   |   |   |   |   |   MaxAcc < 3.9 : Picked (16/3)
+|   |   |   |   |   |   MaxAcc >= 3.9 : Baseline (3/0)
+|   |   CalledHowManyTimes >= 249
+|   |   |   MaxAcc < 0.22 : Baseline (15/0)
+|   |   |   MaxAcc >= 0.22 : Picked (1/0)
+|   Pitch >= -7.5
+|   |   ScreenOn < 0.5
+|   |   |   CalledHowManyTimes < 122.5
+|   |   |   |   Hour < 7.5 : Baseline (4/0)
+|   |   |   |   Hour >= 7.5
+|   |   |   |   |   CalledHowManyTimes < 10
+|   |   |   |   |   |   TimeSinceLastCall < 70.36 : Picked (17/2)
+|   |   |   |   |   |   TimeSinceLastCall >= 70.36 : Baseline (10.66/3)
+|   |   |   |   |   CalledHowManyTimes >= 10
+|   |   |   |   |   |   MaxAcc < 0 : Baseline (1.31/0)
+|   |   |   |   |   |   MaxAcc >= 0 : Picked (25/0)
+|   |   |   CalledHowManyTimes >= 122.5
+|   |   |   |   ScreenChangedMin < 1.94
+|   |   |   |   |   Day < 2.5 : Picked (5/0)
+|   |   |   |   |   Day >= 2.5 : Baseline (5/0)
+|   |   |   |   ScreenChangedMin >= 1.94 : Baseline (34/0)
+|   |   ScreenOn >= 0.5
+|   |   |   MaxAcc < 1.21
+|   |   |   |   Day < 2.5
+|   |   |   |   |   Charging < 0.5
+|   |   |   |   |   |   ScreenChangedMin < 0.53 : Baseline (43/4)
+|   |   |   |   |   |   ScreenChangedMin >= 0.53 : Picked (15/3)
+|   |   |   |   |   Charging >= 0.5 : Baseline (5/0)
+|   |   |   |   Day >= 2.5
+|   |   |   |   |   ScreenChangedMin < 0.17
+|   |   |   |   |   |   Proximity < 0.5 : Baseline (10.56/3)
+|   |   |   |   |   |   Proximity >= 0.5 : Baseline (8.44/0)
+|   |   |   |   |   ScreenChangedMin >= 0.17 : Baseline (58/0)
+|   |   |   MaxAcc >= 1.21
+|   |   |   |   Day < 1.5 : Picked (11/0)
+|   |   |   |   Day >= 1.5
+|   |   |   |   |   Pitch < 1
+|   |   |   |   |   |   TimeSinceLastCall < 40.71 : Picked (7/0)
+|   |   |   |   |   |   TimeSinceLastCall >= 40.71 : Picked (13/6)
+|   |   |   |   |   Pitch >= 1
+|   |   |   |   |   |   ScreenChangedMin < 3.05 : Baseline (11/0)
+|   |   |   |   |   |   ScreenChangedMin >= 3.05 : Picked (2/0)
+RingerMode = Silent
+|   Pitch < -12.5
+|   |   ScreenChangedMin < 8.45
+|   |   |   MaxAcc < 0.05
+|   |   |   |   ScreenOn < 0.5
+|   |   |   |   |   Charging < 0.5
+|   |   |   |   |   |   Pitch < -25.5 : Picked (17.57/1.57)
+|   |   |   |   |   |   Pitch >= -25.5 : Baseline (3.1/1)
+|   |   |   |   |   Charging >= 0.5 : Baseline (1/0)
+|   |   |   |   ScreenOn >= 0.5
+|   |   |   |   |   LastCallPicked < 0.5 : Baseline (20.35/0)
+|   |   |   |   |   LastCallPicked >= 0.5
+|   |   |   |   |   |   CalledHowManyTimes < 35.5 : Baseline (9/0)
+|   |   |   |   |   |   CalledHowManyTimes >= 35.5 : Picked (2/0)
+|   |   |   MaxAcc >= 0.05
+|   |   |   |   RingerModeChangedMin < 31
+|   |   |   |   |   ScreenChangedMin < 0.33 : Picked (4/0)
+|   |   |   |   |   ScreenChangedMin >= 0.33
+|   |   |   |   |   |   CalledHowManyTimes < 2.5 : Picked (3/1)
+|   |   |   |   |   |   CalledHowManyTimes >= 2.5 : Baseline (8/0)
+|   |   |   |   RingerModeChangedMin >= 31
+|   |   |   |   |   Pitch < -44.5
+|   |   |   |   |   |   Day < 3.5 : Picked (4/0)
+|   |   |   |   |   |   Day >= 3.5 : Baseline (1/0)
+|   |   |   |   |   Pitch >= -44.5 : Picked (14/0)
+|   |   ScreenChangedMin >= 8.45 : Baseline (18/0)
+|   Pitch >= -12.5
+|   |   ScreenChangedMin < 4.25
+|   |   |   LastCallPicked < 0.5
+|   |   |   |   MaxAcc < 0.07
+|   |   |   |   |   ChargingChangedMin < 57.25 : Baseline (48/0)
+|   |   |   |   |   ChargingChangedMin >= 57.25
+|   |   |   |   |   |   Hour < 13.5 : Baseline (13/2)
+|   |   |   |   |   |   Hour >= 13.5 : Baseline (26.65/0)
+|   |   |   |   MaxAcc >= 0.07
+|   |   |   |   |   Proximity < 0.5
+|   |   |   |   |   |   ScreenChangedMin < 0.28 : Baseline (2/0)
+|   |   |   |   |   |   ScreenChangedMin >= 0.28 : Picked (9/4)
+|   |   |   |   |   Proximity >= 0.5
+|   |   |   |   |   |   ChargingChangedMin < 76.31 : Baseline (3/1)
+|   |   |   |   |   |   ChargingChangedMin >= 76.31 : Baseline (8/0)
+|   |   |   LastCallPicked >= 0.5
+|   |   |   |   ScreenChangedMin < 0.79
+|   |   |   |   |   ScreenOn < 0.5 : Picked (5/0)
+|   |   |   |   |   ScreenOn >= 0.5
+|   |   |   |   |   |   MaxAcc < 0 : Picked (3/1)
+|   |   |   |   |   |   MaxAcc >= 0 : Baseline (20/0)
+|   |   |   |   ScreenChangedMin >= 0.79
+|   |   |   |   |   ChargingChangedMin < 399.77 : Picked (19/0)
+|   |   |   |   |   ChargingChangedMin >= 399.77 : Baseline (2/0)
+|   |   ScreenChangedMin >= 4.25 : Baseline (48.33/0)
+
+Size of the tree : 214
+Max depth of tree: 7
+
+
+RandomTree
+==========
+
+ScreenChangedMin < 9.66
+|   ScreenOn < 0.5
+|   |   CalledHowManyTimes < 211.5
+|   |   |   RingerMode = Normal
+|   |   |   |   ChargingChangedMin < 0.15 : Baseline (3/0)
+|   |   |   |   ChargingChangedMin >= 0.15
+|   |   |   |   |   MaxAcc < 0
+|   |   |   |   |   |   TimeSinceLastCall < 20.27 : Picked (2/0)
+|   |   |   |   |   |   TimeSinceLastCall >= 20.27 : Baseline (6/0)
+|   |   |   |   |   MaxAcc >= 0
+|   |   |   |   |   |   Pitch < 25 : Picked (862.1/60.89)
+|   |   |   |   |   |   Pitch >= 25 : Picked (109.9/30.11)
+|   |   |   RingerMode = Vibrate
+|   |   |   |   RingerModeChangedMin < 7.49
+|   |   |   |   |   MaxAcc < 0.08
+|   |   |   |   |   |   Hour < 12 : Baseline (5/0)
+|   |   |   |   |   |   Hour >= 12 : Picked (1/0)
+|   |   |   |   |   MaxAcc >= 0.08 : Picked (7/0)
+|   |   |   |   RingerModeChangedMin >= 7.49
+|   |   |   |   |   RingerModeChangedMin < 42.6
+|   |   |   |   |   |   TimeSinceLastCall < 924.28 : Picked (40/2)
+|   |   |   |   |   |   TimeSinceLastCall >= 924.28 : Baseline (1/0)
+|   |   |   |   |   RingerModeChangedMin >= 42.6 : Picked (29/0)
+|   |   |   RingerMode = Silent
+|   |   |   |   ScreenChangedMin < 2.05
+|   |   |   |   |   Pitch < -11
+|   |   |   |   |   |   RingerModeChangedMin < 2.7 : Baseline (3/1)
+|   |   |   |   |   |   RingerModeChangedMin >= 2.7 : Picked (34/0)
+|   |   |   |   |   Pitch >= -11
+|   |   |   |   |   |   ChargingChangedMin < 113.76 : Picked (21/5)
+|   |   |   |   |   |   ChargingChangedMin >= 113.76 : Baseline (9/0)
+|   |   |   |   ScreenChangedMin >= 2.05
+|   |   |   |   |   Pitch < 6.5
+|   |   |   |   |   |   CalledHowManyTimes < 32.5 : Picked (13.52/5.52)
+|   |   |   |   |   |   CalledHowManyTimes >= 32.5 : Baseline (3/0)
+|   |   |   |   |   Pitch >= 6.5 : Baseline (15.48/0)
+|   |   CalledHowManyTimes >= 211.5
+|   |   |   ScreenChangedMin < 1.55
+|   |   |   |   MaxAcc < 0.48
+|   |   |   |   |   ChargingChangedMin < 0.67 : Baseline (9/0)
+|   |   |   |   |   ChargingChangedMin >= 0.67
+|   |   |   |   |   |   ScreenChangedMin < 0.55 : Baseline (29/8)
+|   |   |   |   |   |   ScreenChangedMin >= 0.55 : Picked (13/2)
+|   |   |   |   MaxAcc >= 0.48 : Picked (13/0)
+|   |   |   ScreenChangedMin >= 1.55
+|   |   |   |   Pitch < -1.5
+|   |   |   |   |   Hour < 8.5 : Baseline (10/0)
+|   |   |   |   |   Hour >= 8.5
+|   |   |   |   |   |   ScreenChangedMin < 3.51 : Picked (3/0)
+|   |   |   |   |   |   ScreenChangedMin >= 3.51 : Baseline (3/1)
+|   |   |   |   Pitch >= -1.5
+|   |   |   |   |   Day < 1.5
+|   |   |   |   |   |   MaxAcc < 0.16 : Baseline (15/0)
+|   |   |   |   |   |   MaxAcc >= 0.16 : Baseline (2/1)
+|   |   |   |   |   Day >= 1.5 : Baseline (25/0)
+|   ScreenOn >= 0.5
+|   |   LastCallPicked < 0.5
+|   |   |   CalledHowManyTimes < 236.5
+|   |   |   |   MaxAcc < 0.07
+|   |   |   |   |   RingerMode = Normal
+|   |   |   |   |   |   ScreenChangedMin < 0.04 : Picked (26/10)
+|   |   |   |   |   |   ScreenChangedMin >= 0.04 : Baseline (167/32)
+|   |   |   |   |   RingerMode = Vibrate
+|   |   |   |   |   |   ScreenChangedMin < 0.07 : Picked (4/1)
+|   |   |   |   |   |   ScreenChangedMin >= 0.07 : Baseline (49/4)
+|   |   |   |   |   RingerMode = Silent
+|   |   |   |   |   |   CalledHowManyTimes < 210.5 : Baseline (59/3)
+|   |   |   |   |   |   CalledHowManyTimes >= 210.5 : Picked (2/0)
+|   |   |   |   MaxAcc >= 0.07
+|   |   |   |   |   RingerModeChangedMin < 1.74
+|   |   |   |   |   |   MaxAcc < 1.93 : Baseline (14/0)
+|   |   |   |   |   |   MaxAcc >= 1.93 : Baseline (9/2)
+|   |   |   |   |   RingerModeChangedMin >= 1.74
+|   |   |   |   |   |   ScreenChangedMin < 0.77 : Baseline (159/57)
+|   |   |   |   |   |   ScreenChangedMin >= 0.77 : Picked (53/4)
+|   |   |   CalledHowManyTimes >= 236.5 : Baseline (150/0)
+|   |   LastCallPicked >= 0.5
+|   |   |   Pitch < 37.5
+|   |   |   |   TimeSinceLastCall < 10.03
+|   |   |   |   |   ChargingChangedMin < 21.13
+|   |   |   |   |   |   Pitch < -47.5 : Picked (4.13/0.13)
+|   |   |   |   |   |   Pitch >= -47.5 : Baseline (23.76/11)
+|   |   |   |   |   ChargingChangedMin >= 21.13
+|   |   |   |   |   |   Pitch < -1.5 : Picked (52.67/0.54)
+|   |   |   |   |   |   Pitch >= -1.5 : Picked (33.52/5.34)
+|   |   |   |   TimeSinceLastCall >= 10.03
+|   |   |   |   |   RingerMode = Normal
+|   |   |   |   |   |   Hour < 13.5 : Picked (202.98/93)
+|   |   |   |   |   |   Hour >= 13.5 : Picked (227.18/75.66)
+|   |   |   |   |   RingerMode = Vibrate
+|   |   |   |   |   |   MaxAcc < 1.72 : Baseline (91/25)
+|   |   |   |   |   |   MaxAcc >= 1.72 : Picked (22/4)
+|   |   |   |   |   RingerMode = Silent
+|   |   |   |   |   |   ScreenChangedMin < 1.02 : Baseline (31/5)
+|   |   |   |   |   |   ScreenChangedMin >= 1.02 : Picked (9/0)
+|   |   |   Pitch >= 37.5
+|   |   |   |   Day < 2.5
+|   |   |   |   |   RingerMode = Normal
+|   |   |   |   |   |   ScreenChangedMin < 0.5 : Baseline (34.02/3.02)
+|   |   |   |   |   |   ScreenChangedMin >= 0.5 : Picked (2.92/1.11)
+|   |   |   |   |   RingerMode = Vibrate : Baseline (9/0)
+|   |   |   |   |   RingerMode = Silent : Baseline (0/0)
+|   |   |   |   Day >= 2.5
+|   |   |   |   |   MaxAcc < 0.02
+|   |   |   |   |   |   Hour < 13 : Baseline (5.34/1.34)
+|   |   |   |   |   |   Hour >= 13 : Baseline (8/0)
+|   |   |   |   |   MaxAcc >= 0.02
+|   |   |   |   |   |   MaxAcc < 4.66 : Picked (18.48/3.45)
+|   |   |   |   |   |   MaxAcc >= 4.66 : Baseline (11/3)
+ScreenChangedMin >= 9.66
+|   MaxAcc < 0.04
+|   |   ScreenChangedMin < 26.77
+|   |   |   RingerModeChangedMin < 98.81
+|   |   |   |   Day < 5.5 : Baseline (61/0)
+|   |   |   |   Day >= 5.5
+|   |   |   |   |   ScreenChangedMin < 15.61 : Picked (1/0)
+|   |   |   |   |   ScreenChangedMin >= 15.61 : Baseline (5/0)
+|   |   |   RingerModeChangedMin >= 98.81
+|   |   |   |   MaxAcc < 0.01
+|   |   |   |   |   Hour < 16.5
+|   |   |   |   |   |   ScreenChangedMin < 18.8 : Baseline (8/2)
+|   |   |   |   |   |   ScreenChangedMin >= 18.8 : Picked (2/0)
+|   |   |   |   |   Hour >= 16.5 : Picked (7/0)
+|   |   |   |   MaxAcc >= 0.01
+|   |   |   |   |   RingerModeChangedMin < 711.3 : Baseline (18/0)
+|   |   |   |   |   RingerModeChangedMin >= 711.3 : Picked (4/0)
+|   |   ScreenChangedMin >= 26.77 : Baseline (43/0)
+|   MaxAcc >= 0.04
+|   |   Proximity < 0.5
+|   |   |   ScreenChangedMin < 21.03
+|   |   |   |   Day < 3.5
+|   |   |   |   |   TimeSinceLastCall < 56.1
+|   |   |   |   |   |   CalledHowManyTimes < 8 : Picked (5/0)
+|   |   |   |   |   |   CalledHowManyTimes >= 8 : Baseline (7/3)
+|   |   |   |   |   TimeSinceLastCall >= 56.1 : Picked (13/0)
+|   |   |   |   Day >= 3.5 : Picked (15/0)
+|   |   |   ScreenChangedMin >= 21.03
+|   |   |   |   Hour < 13.5 : Baseline (11/0)
+|   |   |   |   Hour >= 13.5
+|   |   |   |   |   Pitch < 14 : Picked (10/0)
+|   |   |   |   |   Pitch >= 14 : Baseline (1/0)
+|   |   Proximity >= 0.5
+|   |   |   CalledHowManyTimes < 3
+|   |   |   |   RingerModeChangedMin < 145.07 : Baseline (2/0)
+|   |   |   |   RingerModeChangedMin >= 145.07
+|   |   |   |   |   MaxAcc < 4.99 : Picked (3/0)
+|   |   |   |   |   MaxAcc >= 4.99 : Baseline (1/0)
+|   |   |   CalledHowManyTimes >= 3 : Baseline (17/0)
+
+Size of the tree : 149
+Max depth of tree: 7
+
+
+RandomTree
+==========
+
+ScreenOn < 0.5
+|   MaxAcc < 0.02
+|   |   RingerMode = Normal
+|   |   |   ScreenChangedMin < 2.35
+|   |   |   |   ChargingChangedMin < 71.93
+|   |   |   |   |   TimeSinceLastCall < 0.77
+|   |   |   |   |   |   Hour < 10.5 : Baseline (4/0)
+|   |   |   |   |   |   Hour >= 10.5 : Picked (4/1)
+|   |   |   |   |   TimeSinceLastCall >= 0.77
+|   |   |   |   |   |   RingerModeChangedMin < 1.85 : Baseline (14/6)
+|   |   |   |   |   |   RingerModeChangedMin >= 1.85 : Picked (157/14)
+|   |   |   |   ChargingChangedMin >= 71.93
+|   |   |   |   |   ChargingChangedMin < 382.92 : Picked (53/0)
+|   |   |   |   |   ChargingChangedMin >= 382.92
+|   |   |   |   |   |   ChargingChangedMin < 401.65 : Baseline (2/0)
+|   |   |   |   |   |   ChargingChangedMin >= 401.65 : Picked (18/0)
+|   |   |   ScreenChangedMin >= 2.35
+|   |   |   |   CalledHowManyTimes < 110
+|   |   |   |   |   CalledHowManyTimes < 6.5
+|   |   |   |   |   |   Hour < 8.5 : Picked (1/0)
+|   |   |   |   |   |   Hour >= 8.5 : Baseline (58/13)
+|   |   |   |   |   CalledHowManyTimes >= 6.5
+|   |   |   |   |   |   MaxAcc < 0 : Baseline (15/7)
+|   |   |   |   |   |   MaxAcc >= 0 : Picked (24/2)
+|   |   |   |   CalledHowManyTimes >= 110
+|   |   |   |   |   ScreenChangedMin < 2.55 : Picked (1/0)
+|   |   |   |   |   ScreenChangedMin >= 2.55 : Baseline (32/0)
+|   |   RingerMode = Vibrate
+|   |   |   ScreenChangedMin < 3.9
+|   |   |   |   RingerModeChangedMin < 45.44
+|   |   |   |   |   TimeSinceLastCall < 529.84
+|   |   |   |   |   |   CalledHowManyTimes < 227 : Picked (7/1)
+|   |   |   |   |   |   CalledHowManyTimes >= 227 : Baseline (8/0)
+|   |   |   |   |   TimeSinceLastCall >= 529.84 : Baseline (7/0)
+|   |   |   |   RingerModeChangedMin >= 45.44
+|   |   |   |   |   ScreenChangedMin < 0.85
+|   |   |   |   |   |   RingerModeChangedMin < 333.98 : Picked (3/0)
+|   |   |   |   |   |   RingerModeChangedMin >= 333.98 : Baseline (1/0)
+|   |   |   |   |   ScreenChangedMin >= 0.85 : Picked (12/0)
+|   |   |   ScreenChangedMin >= 3.9
+|   |   |   |   Pitch < -24.5 : Picked (1/0)
+|   |   |   |   Pitch >= -24.5 : Baseline (20/0)
+|   |   RingerMode = Silent
+|   |   |   ChargingChangedMin < 32.93
+|   |   |   |   Charging < 0.5
+|   |   |   |   |   ScreenChangedMin < 13.19 : Picked (9/0)
+|   |   |   |   |   ScreenChangedMin >= 13.19 : Baseline (1/0)
+|   |   |   |   Charging >= 0.5 : Baseline (6/0)
+|   |   |   ChargingChangedMin >= 32.93
+|   |   |   |   RingerModeChangedMin < 845.08
+|   |   |   |   |   Pitch < 6.5
+|   |   |   |   |   |   ScreenChangedMin < 2.95 : Baseline (10/3)
+|   |   |   |   |   |   ScreenChangedMin >= 2.95 : Baseline (20.12/0)
+|   |   |   |   |   Pitch >= 6.5 : Baseline (23.88/0)
+|   |   |   |   RingerModeChangedMin >= 845.08 : Picked (2/0)
+|   MaxAcc >= 0.02
+|   |   ScreenChangedMin < 5.44
+|   |   |   CalledHowManyTimes < 251
+|   |   |   |   MaxAcc < 3.04
+|   |   |   |   |   TimeSinceLastCall < 44.44
+|   |   |   |   |   |   ScreenChangedMin < 3.93 : Picked (261/11)
+|   |   |   |   |   |   ScreenChangedMin >= 3.93 : Picked (19/7)
+|   |   |   |   |   TimeSinceLastCall >= 44.44
+|   |   |   |   |   |   MaxAcc < 0.06 : Picked (90/0)
+|   |   |   |   |   |   MaxAcc >= 0.06 : Picked (188/5)
+|   |   |   |   MaxAcc >= 3.04
+|   |   |   |   |   RingerMode = Normal
+|   |   |   |   |   |   Pitch < 2.5 : Picked (193.26/14.26)
+|   |   |   |   |   |   Pitch >= 2.5 : Picked (62.74/13.74)
+|   |   |   |   |   RingerMode = Vibrate
+|   |   |   |   |   |   Proximity < 0.5 : Picked (6/1)
+|   |   |   |   |   |   Proximity >= 0.5 : Picked (10/0)
+|   |   |   |   |   RingerMode = Silent
+|   |   |   |   |   |   Hour < 16 : Picked (5/2)
+|   |   |   |   |   |   Hour >= 16 : Baseline (2/0)
+|   |   |   CalledHowManyTimes >= 251
+|   |   |   |   CalledHowManyTimes < 601.5
+|   |   |   |   |   ScreenChangedMin < 1.46
+|   |   |   |   |   |   CalledHowManyTimes < 532.5 : Baseline (8/4)
+|   |   |   |   |   |   CalledHowManyTimes >= 532.5 : Baseline (5/0)
+|   |   |   |   |   ScreenChangedMin >= 1.46 : Baseline (21/0)
+|   |   |   |   CalledHowManyTimes >= 601.5
+|   |   |   |   |   MaxAcc < 0.88
+|   |   |   |   |   |   TimeSinceLastCall < 12.55 : Picked (1/0)
+|   |   |   |   |   |   TimeSinceLastCall >= 12.55 : Baseline (15/3)
+|   |   |   |   |   MaxAcc >= 0.88 : Picked (13/0)
+|   |   ScreenChangedMin >= 5.44
+|   |   |   CalledHowManyTimes < 92.5
+|   |   |   |   TimeSinceLastCall < 11.78 : Baseline (11/0)
+|   |   |   |   TimeSinceLastCall >= 11.78
+|   |   |   |   |   MaxAcc < 3.46
+|   |   |   |   |   |   ScreenChangedMin < 22.85 : Picked (29/9)
+|   |   |   |   |   |   ScreenChangedMin >= 22.85 : Baseline (16/0)
+|   |   |   |   |   MaxAcc >= 3.46
+|   |   |   |   |   |   TimeSinceLastCall < 105.82 : Picked (5/2)
+|   |   |   |   |   |   TimeSinceLastCall >= 105.82 : Picked (13/0)
+|   |   |   CalledHowManyTimes >= 92.5 : Baseline (28/0)
+ScreenOn >= 0.5
+|   Pitch < -9.5
+|   |   ScreenChangedMin < 0.08
+|   |   |   CalledHowManyTimes < 277.5
+|   |   |   |   Pitch < -177.5
+|   |   |   |   |   CalledHowManyTimes < 29 : Picked (1.02/0.02)
+|   |   |   |   |   CalledHowManyTimes >= 29 : Baseline (2.01/0)
+|   |   |   |   Pitch >= -177.5
+|   |   |   |   |   RingerModeChangedMin < 3.34
+|   |   |   |   |   |   Day < 3.5 : Picked (6/1)
+|   |   |   |   |   |   Day >= 3.5 : Baseline (2/0)
+|   |   |   |   |   RingerModeChangedMin >= 3.34
+|   |   |   |   |   |   CalledHowManyTimes < 22 : Picked (60.99/6.99)
+|   |   |   |   |   |   CalledHowManyTimes >= 22 : Picked (59.33/0.33)
+|   |   |   CalledHowManyTimes >= 277.5 : Baseline (9/0)
+|   |   ScreenChangedMin >= 0.08
+|   |   |   MaxAcc < 0.01
+|   |   |   |   TimeSinceLastCall < 118.45
+|   |   |   |   |   ScreenChangedMin < 0.52
+|   |   |   |   |   |   ChargingChangedMin < 39.67 : Baseline (21.67/5)
+|   |   |   |   |   |   ChargingChangedMin >= 39.67 : Baseline (21.67/0.34)
+|   |   |   |   |   ScreenChangedMin >= 0.52
+|   |   |   |   |   |   ChargingChangedMin < 49.74 : Picked (1.34/0.34)
+|   |   |   |   |   |   ChargingChangedMin >= 49.74 : Picked (3.67/0)
+|   |   |   |   TimeSinceLastCall >= 118.45 : Baseline (28/0)
+|   |   |   MaxAcc >= 0.01
+|   |   |   |   TimeSinceLastCall < 1.21
+|   |   |   |   |   ChargingChangedMin < 80.56
+|   |   |   |   |   |   ScreenChangedMin < 2.29 : Baseline (22.34/0)
+|   |   |   |   |   |   ScreenChangedMin >= 2.29 : Baseline (3/1)
+|   |   |   |   |   ChargingChangedMin >= 80.56
+|   |   |   |   |   |   ScreenChangedMin < 1.25 : Baseline (4.34/1)
+|   |   |   |   |   |   ScreenChangedMin >= 1.25 : Picked (2/0)
+|   |   |   |   TimeSinceLastCall >= 1.21
+|   |   |   |   |   Hour < 18.5
+|   |   |   |   |   |   RingerModeChangedMin < 0.38 : Baseline (6/0)
+|   |   |   |   |   |   RingerModeChangedMin >= 0.38 : Baseline (191.48/94.42)
+|   |   |   |   |   Hour >= 18.5
+|   |   |   |   |   |   MaxAcc < 0.07 : Picked (25.02/10)
+|   |   |   |   |   |   MaxAcc >= 0.07 : Picked (28.05/2)
+|   Pitch >= -9.5
+|   |   RingerMode = Normal
+|   |   |   LastCallPicked < 0.5
+|   |   |   |   CalledHowManyTimes < 223
+|   |   |   |   |   ScreenChangedMin < 0.04
+|   |   |   |   |   |   CalledHowManyTimes < 156 : Picked (28.66/2.66)
+|   |   |   |   |   |   CalledHowManyTimes >= 156 : Baseline (8/0)
+|   |   |   |   |   ScreenChangedMin >= 0.04
+|   |   |   |   |   |   ScreenChangedMin < 0.51 : Baseline (128.3/19)
+|   |   |   |   |   |   ScreenChangedMin >= 0.51 : Picked (53.95/24.65)
+|   |   |   |   CalledHowManyTimes >= 223 : Baseline (57/0)
+|   |   |   LastCallPicked >= 0.5
+|   |   |   |   Pitch < 50
+|   |   |   |   |   MaxAcc < 0.02
+|   |   |   |   |   |   ScreenChangedMin < 2.22 : Baseline (109.47/35.73)
+|   |   |   |   |   |   ScreenChangedMin >= 2.22 : Picked (24.04/4)
+|   |   |   |   |   MaxAcc >= 0.02
+|   |   |   |   |   |   ChargingChangedMin < 0.42 : Baseline (7.58/0.58)
+|   |   |   |   |   |   ChargingChangedMin >= 0.42 : Picked (184.95/54.62)
+|   |   |   |   Pitch >= 50
+|   |   |   |   |   RingerModeChangedMin < 655.43
+|   |   |   |   |   |   ScreenChangedMin < 0.7 : Baseline (37.86/10.52)
+|   |   |   |   |   |   ScreenChangedMin >= 0.7 : Picked (4.37/1.09)
+|   |   |   |   |   RingerModeChangedMin >= 655.43
+|   |   |   |   |   |   Pitch < 83.5 : Baseline (1.56/0.43)
+|   |   |   |   |   |   Pitch >= 83.5 : Picked (4.67/0.39)
+|   |   RingerMode = Vibrate
+|   |   |   ChargingChangedMin < 28.14
+|   |   |   |   ScreenChangedMin < 0.56
+|   |   |   |   |   MaxAcc < 4.55 : Baseline (57/0)
+|   |   |   |   |   MaxAcc >= 4.55
+|   |   |   |   |   |   Hour < 15.5 : Picked (5/2)
+|   |   |   |   |   |   Hour >= 15.5 : Baseline (3/0)
+|   |   |   |   ScreenChangedMin >= 0.56
+|   |   |   |   |   TimeSinceLastCall < 9.58 : Baseline (8/0)
+|   |   |   |   |   TimeSinceLastCall >= 9.58
+|   |   |   |   |   |   Hour < 10 : Baseline (3/0)
+|   |   |   |   |   |   Hour >= 10 : Picked (6/1)
+|   |   |   ChargingChangedMin >= 28.14
+|   |   |   |   RingerModeChangedMin < 4.58 : Picked (8/0)
+|   |   |   |   RingerModeChangedMin >= 4.58
+|   |   |   |   |   MaxAcc < 2.59
+|   |   |   |   |   |   Proximity < 0.5 : Baseline (75.45/20)
+|   |   |   |   |   |   Proximity >= 0.5 : Baseline (28.55/1)
+|   |   |   |   |   MaxAcc >= 2.59
+|   |   |   |   |   |   LastCallPicked < 0.5 : Picked (4/0)
+|   |   |   |   |   |   LastCallPicked >= 0.5 : Picked (16/5)
+|   |   RingerMode = Silent
+|   |   |   CalledHowManyTimes < 300.5
+|   |   |   |   ChargingChangedMin < 0.34 : Picked (2/0)
+|   |   |   |   ChargingChangedMin >= 0.34
+|   |   |   |   |   CalledHowManyTimes < 272.5
+|   |   |   |   |   |   Hour < 11.5 : Baseline (22/0)
+|   |   |   |   |   |   Hour >= 11.5 : Baseline (69.66/11)
+|   |   |   |   |   CalledHowManyTimes >= 272.5 : Picked (2/0)
+|   |   |   CalledHowManyTimes >= 300.5 : Baseline (24/0)
+
+Size of the tree : 194
+Max depth of tree: 7
+
+
+RandomTree
+==========
+
+ScreenOn < 0.5
+|   CalledHowManyTimes < 211.5
+|   |   Pitch < 11.5
+|   |   |   ScreenChangedMin < 16.09
+|   |   |   |   MaxAcc < 0
+|   |   |   |   |   RingerModeChangedMin < 138.44 : Baseline (10.05/0)
+|   |   |   |   |   RingerModeChangedMin >= 138.44 : Picked (4/0)
+|   |   |   |   MaxAcc >= 0
+|   |   |   |   |   RingerMode = Normal
+|   |   |   |   |   |   ScreenChangedMin < 3.39 : Picked (705.57/46.84)
+|   |   |   |   |   |   ScreenChangedMin >= 3.39 : Picked (152/35)
+|   |   |   |   |   RingerMode = Vibrate
+|   |   |   |   |   |   CalledHowManyTimes < 88.5 : Picked (77/0)
+|   |   |   |   |   |   CalledHowManyTimes >= 88.5 : Picked (15/3)
+|   |   |   |   |   RingerMode = Silent
+|   |   |   |   |   |   Day < 3.5 : Picked (35/4)
+|   |   |   |   |   |   Day >= 3.5 : Baseline (26/11)
+|   |   |   ScreenChangedMin >= 16.09
+|   |   |   |   LastCallPicked < 0.5 : Baseline (54.68/0)
+|   |   |   |   LastCallPicked >= 0.5
+|   |   |   |   |   RingerModeChangedMin < 171.62 : Baseline (13/0)
+|   |   |   |   |   RingerModeChangedMin >= 171.62
+|   |   |   |   |   |   RingerModeChangedMin < 194.82 : Picked (1/0)
+|   |   |   |   |   |   RingerModeChangedMin >= 194.82 : Baseline (5/1)
+|   |   Pitch >= 11.5
+|   |   |   TimeSinceLastCall < 3.92
+|   |   |   |   CalledHowManyTimes < 1.5 : Picked (3/0)
+|   |   |   |   CalledHowManyTimes >= 1.5
+|   |   |   |   |   ChargingChangedMin < 43.84
+|   |   |   |   |   |   Proximity < 0.5 : Baseline (4/0)
+|   |   |   |   |   |   Proximity >= 0.5 : Picked (1/0)
+|   |   |   |   |   ChargingChangedMin >= 43.84 : Baseline (15.16/0)
+|   |   |   TimeSinceLastCall >= 3.92
+|   |   |   |   ScreenChangedMin < 5.76
+|   |   |   |   |   Hour < 20.5
+|   |   |   |   |   |   CalledHowManyTimes < 3.5 : Picked (51.48/16)
+|   |   |   |   |   |   CalledHowManyTimes >= 3.5 : Picked (92.43/6.64)
+|   |   |   |   |   Hour >= 20.5 : Baseline (4/0)
+|   |   |   |   ScreenChangedMin >= 5.76
+|   |   |   |   |   MaxAcc < 2.46
+|   |   |   |   |   |   Pitch < 179.5 : Baseline (32.62/0)
+|   |   |   |   |   |   Pitch >= 179.5 : Picked (1.02/0.02)
+|   |   |   |   |   MaxAcc >= 2.46 : Picked (3/0)
+|   CalledHowManyTimes >= 211.5
+|   |   Hour < 12.5
+|   |   |   MaxAcc < 0.22
+|   |   |   |   ScreenChangedMin < 1.09
+|   |   |   |   |   ScreenChangedMin < 0.14 : Picked (1/0)
+|   |   |   |   |   ScreenChangedMin >= 0.14
+|   |   |   |   |   |   ScreenChangedMin < 0.61 : Baseline (7/0)
+|   |   |   |   |   |   ScreenChangedMin >= 0.61 : Picked (1/0)
+|   |   |   |   ScreenChangedMin >= 1.09 : Baseline (53/0)
+|   |   |   MaxAcc >= 0.22
+|   |   |   |   ScreenChangedMin < 4.47
+|   |   |   |   |   Hour < 8.5
+|   |   |   |   |   |   Day < 2 : Picked (1/0)
+|   |   |   |   |   |   Day >= 2 : Baseline (1/0)
+|   |   |   |   |   Hour >= 8.5 : Picked (2/0)
+|   |   |   |   ScreenChangedMin >= 4.47 : Baseline (6/0)
+|   |   Hour >= 12.5
+|   |   |   MaxAcc < 0.32
+|   |   |   |   Pitch < -6.5
+|   |   |   |   |   CalledHowManyTimes < 280.5 : Picked (6/0)
+|   |   |   |   |   CalledHowManyTimes >= 280.5
+|   |   |   |   |   |   RingerMode = Normal : Baseline (3/1)
+|   |   |   |   |   |   RingerMode = Vibrate : Picked (1/0)
+|   |   |   |   |   |   RingerMode = Silent : Baseline (2/0)
+|   |   |   |   Pitch >= -6.5
+|   |   |   |   |   MaxAcc < 0.01
+|   |   |   |   |   |   RingerModeChangedMin < 14.24 : Baseline (3/0)
+|   |   |   |   |   |   RingerModeChangedMin >= 14.24 : Picked (6/2)
+|   |   |   |   |   MaxAcc >= 0.01
+|   |   |   |   |   |   ChargingChangedMin < 11.34 : Baseline (11/2)
+|   |   |   |   |   |   ChargingChangedMin >= 11.34 : Baseline (11/0)
+|   |   |   MaxAcc >= 0.32 : Picked (15/0)
+ScreenOn >= 0.5
+|   LastCallPicked < 0.5
+|   |   TimeSinceLastCall < 1.13
+|   |   |   MaxAcc < 0.37 : Baseline (93/0)
+|   |   |   MaxAcc >= 0.37
+|   |   |   |   Hour < 20 : Baseline (4/0)
+|   |   |   |   Hour >= 20 : Picked (2/0)
+|   |   TimeSinceLastCall >= 1.13
+|   |   |   CalledHowManyTimes < 234.5
+|   |   |   |   ScreenChangedMin < 0.06
+|   |   |   |   |   TimeSinceLastCall < 42.15
+|   |   |   |   |   |   TimeSinceLastCall < 24.88 : Picked (17/6)
+|   |   |   |   |   |   TimeSinceLastCall >= 24.88 : Baseline (9/0)
+|   |   |   |   |   TimeSinceLastCall >= 42.15
+|   |   |   |   |   |   ChargingChangedMin < 10.32 : Picked (11/4)
+|   |   |   |   |   |   ChargingChangedMin >= 10.32 : Picked (40/0)
+|   |   |   |   ScreenChangedMin >= 0.06
+|   |   |   |   |   MaxAcc < 0.04
+|   |   |   |   |   |   RingerMode = Normal : Baseline (127/30)
+|   |   |   |   |   |   RingerMode = Vibrate : Baseline (56/5)
+|   |   |   |   |   |   RingerMode = Silent : Baseline (53/1)
+|   |   |   |   |   MaxAcc >= 0.04
+|   |   |   |   |   |   ScreenChangedMin < 0.85 : Baseline (161/44)
+|   |   |   |   |   |   ScreenChangedMin >= 0.85 : Picked (58/4)
+|   |   |   CalledHowManyTimes >= 234.5
+|   |   |   |   ScreenChangedMin < 2.84 : Baseline (102/0)
+|   |   |   |   ScreenChangedMin >= 2.84
+|   |   |   |   |   RingerModeChangedMin < 32.32 : Baseline (8/0)
+|   |   |   |   |   RingerModeChangedMin >= 32.32 : Picked (3/0)
+|   LastCallPicked >= 0.5
+|   |   Proximity < 0.5
+|   |   |   MaxAcc < 0.02
+|   |   |   |   CalledHowManyTimes < 88.5
+|   |   |   |   |   RingerMode = Normal
+|   |   |   |   |   |   ScreenChangedMin < 2.22 : Baseline (114.62/39.17)
+|   |   |   |   |   |   ScreenChangedMin >= 2.22 : Picked (20/0)
+|   |   |   |   |   RingerMode = Vibrate
+|   |   |   |   |   |   MaxAcc < 0 : Baseline (8/0)
+|   |   |   |   |   |   MaxAcc >= 0 : Baseline (23/5)
+|   |   |   |   |   RingerMode = Silent : Baseline (11/0)
+|   |   |   |   CalledHowManyTimes >= 88.5
+|   |   |   |   |   CalledHowManyTimes < 175
+|   |   |   |   |   |   Hour < 19.5 : Picked (16/0)
+|   |   |   |   |   |   Hour >= 19.5 : Picked (4/1)
+|   |   |   |   |   CalledHowManyTimes >= 175
+|   |   |   |   |   |   Hour < 16.5 : Picked (6/1)
+|   |   |   |   |   |   Hour >= 16.5 : Baseline (6/1)
+|   |   |   MaxAcc >= 0.02
+|   |   |   |   ScreenChangedMin < 0.76
+|   |   |   |   |   ChargingChangedMin < 92.13
+|   |   |   |   |   |   RingerModeChangedMin < 28.76 : Picked (95.34/43)
+|   |   |   |   |   |   RingerModeChangedMin >= 28.76 : Picked (81/17)
+|   |   |   |   |   ChargingChangedMin >= 92.13
+|   |   |   |   |   |   TimeSinceLastCall < 11.85 : Picked (12/1)
+|   |   |   |   |   |   TimeSinceLastCall >= 11.85 : Baseline (44.45/14.72)
+|   |   |   |   ScreenChangedMin >= 0.76
+|   |   |   |   |   CalledHowManyTimes < 29.5
+|   |   |   |   |   |   Day < 1.5 : Picked (52.17/5)
+|   |   |   |   |   |   Day >= 1.5 : Picked (67/0)
+|   |   |   |   |   CalledHowManyTimes >= 29.5
+|   |   |   |   |   |   CalledHowManyTimes < 45.5 : Baseline (5/0)
+|   |   |   |   |   |   CalledHowManyTimes >= 45.5 : Picked (27.45/8)
+|   |   Proximity >= 0.5
+|   |   |   CalledHowManyTimes < 157.5
+|   |   |   |   CalledHowManyTimes < 5.5
+|   |   |   |   |   ScreenChangedMin < 0.04
+|   |   |   |   |   |   Hour < 17.5 : Picked (7/0)
+|   |   |   |   |   |   Hour >= 17.5 : Baseline (1/0)
+|   |   |   |   |   ScreenChangedMin >= 0.04
+|   |   |   |   |   |   Day < 1.5 : Baseline (36.1/2.83)
+|   |   |   |   |   |   Day >= 1.5 : Baseline (30.55/11.28)
+|   |   |   |   CalledHowManyTimes >= 5.5
+|   |   |   |   |   CalledHowManyTimes < 6.5 : Picked (12/0)
+|   |   |   |   |   CalledHowManyTimes >= 6.5
+|   |   |   |   |   |   CalledHowManyTimes < 13.5 : Baseline (24.83/6.83)
+|   |   |   |   |   |   CalledHowManyTimes >= 13.5 : Picked (96.66/42.28)
+|   |   |   CalledHowManyTimes >= 157.5
+|   |   |   |   RingerModeChangedMin < 12.39 : Baseline (7/0)
+|   |   |   |   RingerModeChangedMin >= 12.39
+|   |   |   |   |   MaxAcc < 0.05 : Baseline (6/0)
+|   |   |   |   |   MaxAcc >= 0.05
+|   |   |   |   |   |   RingerMode = Normal : Baseline (3.55/0.55)
+|   |   |   |   |   |   RingerMode = Vibrate : Picked (1.28/0)
+|   |   |   |   |   |   RingerMode = Silent : Baseline (0/0)
+
+Size of the tree : 160
+Max depth of tree: 7
+
+Out of bag error: 0.2125
+
+
+
+Time taken to build model: 0.15 seconds
+
+=== Evaluation on training set ===
+
+Time taken to test model on training data: 0.13 seconds
+
+=== Summary ===
+
+Correctly Classified Instances        2652               88.4295 %
+Incorrectly Classified Instances       347               11.5705 %
+Kappa statistic                          0.7594
+Mean absolute error                      0.252 
+Root mean squared error                  0.3135
+Relative absolute error                 51.7733 %
+Root relative squared error             63.5435 %
+Coverage of cases (0.95 level)         100      %
+Mean rel. region size (0.95 level)      96.8323 %
+Total Number of Instances             2999     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.818    0.068    0.897      0.818    0.855      0.762    0.948     0.943     Baseline
+                 0.932    0.182    0.876      0.932    0.904      0.762    0.948     0.953     Picked
+Weighted Avg.    0.884    0.134    0.885      0.884    0.883      0.762    0.948     0.949     
+
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+ 1027  229 |    a = Baseline
+  118 1625 |    b = Picked
+

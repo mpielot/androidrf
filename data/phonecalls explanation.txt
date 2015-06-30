@@ -1,0 +1,26 @@
+The 'phonecalls' data set
+=========================
+
+'phonecalls.csv' is a data set that contains 15 features of 3000 phone calls. In my past research, I used this data to show how well mobile phone can predict whether it's owner will pick-up a phone call. The results can be found in "Large-Scale Evaluation of Call-Availability Prediction": http://pielot.org/pubs/Pielot2014-UbiComp-CallAvailability.pdf
+
+'phonecalls.txt' contains the output of WEKA's console when using this data set to create a RandomForest (with 'printTree' option enabled).
+
+
+The features are:
+
+* Day: Day of the week. Ranges from 0 (Monday) to 6 (Sunday)
+* Hour: Hour of the day. Ranges from 0 (Midnight) to 23 hours
+* RingerMode:	Ringer mode: "Normal" = audible ring, "Vibrate" = vibration alarm only, "Silent" = no sound or vibration
+* RingerModeChangedMin: Time in minutes since the ringer mode was last changed
+* Charging: Indicates whether the phone is connected to USB or charged (1) or not (0)
+* ChargingChangedMin: Time in minutes since the phone was last (un)plugged
+* ScreenOn: Indicates whether the screen was on (1) or off (0) prior to the call. This variable is robust to the fact that an incoming call will turn on the screen.
+* ScreenChangedMin: Time in minutes since the screen was last turned on or off
+* Proximity: Indicates whether the proximity sensor on the front of the screen was covered (1) or not (0) when the call arrived
+* Pitch: Pitch angle of the phone when call started: 0 = phone lies parallel to surface, 45 degree means screen points towards user's face
+* MaxAcc: Maximum acceleration in G measured while the phone was ringing
+* CalledHowManyTimes: Indicates how often the same person has called before
+* TimeSinceLastCall: Time in minutes since the last incoming call
+* LastCallPicked: Indicates whether the last call was picked up (1) or not (0)
+* Picked (ground truth): Indicates whether the user has picked up this the call (picked) or not (baseline)
+
